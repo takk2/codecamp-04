@@ -2,14 +2,14 @@ import styled from '@emotion/styled'
 
 export const Container = styled.div`
   width: 640px;
-  height: 1138px;
+  height: auto;
   border: 1px solid black;
 `
 
 export const Search = styled.img`
   width: 32px;
   height: 32px;
-  margin: 79px 48px 0px 560px;
+  margin: 36px 48px 0px 560px;
   color: black;
 `
 
@@ -39,9 +39,16 @@ export const Name = styled.h2`
   margin-left: 20px;
 `
 
+export const Arrow2 = styled.img`
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+`
+
 export const Nav = styled.div`
   width: 100%;
   height: 32px;
+  margin-top: 52px;
   display: flex;
   align-items: center;
 `
@@ -51,6 +58,7 @@ export const Tab = styled.div`
   font-weight: bold;
   margin-left: 50px;
   margin-top: 52px;
+  color: #adadad;
 `
 
 export const Tab1 = styled.div`

@@ -1,5 +1,5 @@
 import {Container, Search, Header, My, Photo, Name, Nav, Tab, Tab1, Line, Body, QuestionBoard, Question, Number, Title, Arrow,
-        Footer, Icons, Icon, IconsName, IconName} from '../../../styles/faq'
+        Footer, Icons, Icon, IconsName, IconName,Arrow2} from '../../../styles/faq'
 
 export default function Faq(){
 
@@ -12,6 +12,7 @@ export default function Faq(){
         <My>마이</My>
         <Photo src="/images/img-60-profile-image.png" />
         <Name>임정아</Name>
+        <Arrow2 src="/images/ic-28-arrow.png" />
       </Header>
       <Nav>
         <Tab>공지사항</Tab>

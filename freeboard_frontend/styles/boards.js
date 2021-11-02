@@ -1,5 +1,15 @@
 import styled from '@emotion/styled'
 
+export const Page = styled.div`
+  width: 1200px;
+  height: auto;
+  margin: 30px 360px 0px 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+`
+
 export const H1 = styled.h1`
   font-size: 36px;
   font-weight: 700;
@@ -25,9 +35,13 @@ export const Container = styled.div`
 `
 
 export const Info = styled.div`
-  display: flex;
-  padding-bottom: 40px;
-  justify-content: space-between;
+  width: 486px;
+  height: 20px;
+  color: red;
+  text-align: left;
+  /* margin-left: 10px; */
+  font-size: 14px;
+  margin-top: 5px;
 ` 
 
 export const Writer = styled.div`
@@ -167,8 +181,11 @@ export const Photo = styled.div`
 export const GrayBox = styled.div`
   width: 78px;
   height: 78px;
+  display: flex;
   background-color: #BDBDBD;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 
 `
 export const MainSet = styled.div`
@@ -194,12 +211,13 @@ export const Button = styled.button`
   width: 179px;
   height: 52px;
   background-color: #ffd600;
+  align-items: center;
   font-size: 16px;
   text-align: center;
   font-size: 12px;
   font-weight: 24px;
   margin-top: 80px;
-  margin-left: 510px;
+  margin-left: 450px;
   border: none;
 `
 
