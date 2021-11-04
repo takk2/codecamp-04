@@ -1,7 +1,20 @@
 import {Page, Container, Wrapper, Noti, Info, Writer, Label, InputName, H1, InputPW, Password, Title, TitleBox, Body, BodyText, 
 Address, Address1, Label2, Search, Address2, Youtube, YoutubeLink, Photo, GrayBox, Box, MainSet, Radio, Radio1, Button} from '../../../styles/boards'
 import {useState} from 'react'
+import { useMutation , gql} from "@apollo/client"
 
+const CREATE_BOARD = gql`
+  mutation createBoard( $createBoardInput : CreateBoardInput!) {
+    createBoard(createBoardInput : $createBoardInput){
+      _id
+      writer
+      title
+      contents
+    }
+  }
+`
+
+// export function GraphqlMutationProductPage()                                                                                                           
 export default function Boards(){
 
   const [ name, setNameChk ] = useState("")
@@ -13,6 +26,26 @@ export default function Boards(){
   const [ passwordError, setPasswordError ] = useState("")
   const [ titleError, setTitleError ] = useState("")
   const [ bodyError, setBodyError ] = useState("")
+
+  // const [myWriter, setMyWriter] = useState("")
+  // const [myPassword, setMyPassword] = useState("")
+  // const [myTitle, setMyTitle] = useState("")
+  // const [myContents, setMyContents] = useState("")
+
+  const [ createBoard ] = useMutation( CREATE_BOARD )
+
+  // function onChangeMyWriter(event){
+  //   setMyWriter(event.target.value)
+  // }
+  // function onChangeMyPassword(event){
+  //   setMyPassword(event.target.value)
+  // }
+  // function onChangeMyTitle(event){
+  //   setMyTitle(event.target.value)
+  // }
+  // function onChangeMyContents(event){
+  //   setMyContents(event.target.value)
+  // }
 
   function NameChk(event){
     setNameChk(event.target.value)
@@ -30,7 +63,7 @@ export default function Boards(){
     setBodyChk(event.target.value)
   }
 
-  function Check(){
+  async function Check(){
     if(name.length === 0) {
       setNameError("작성자명을 입력해주세요.")
     } else {
@@ -54,7 +87,26 @@ export default function Boards(){
     } else {
       setBodyError("")
     }
+
+    if(name.length !== 0 &&
+      password.length !== 0 &&
+      title.length !== 0 &&
+      body.length !== 0){
+      const result = await createBoard({
+        variables: {
+          createBoardInput: {
+            
+              writer: name,
+              password: password,
+              title: title,
+              contents: body
+          }
+        }
+      })
+      console.log(result)
+    }
   } 
+    
 
   return(
     <div>
