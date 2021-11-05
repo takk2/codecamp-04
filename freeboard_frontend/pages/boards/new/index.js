@@ -2,6 +2,7 @@ import {Page, Container, Wrapper, Noti, Info, Writer, Label, InputName, H1, Inpu
 Address, Address1, Label2, Search, Address2, Youtube, YoutubeLink, Photo, GrayBox, Box, MainSet, Radio, Radio1, Button} from '../../../styles/boards'
 import {useState} from 'react'
 import { useMutation , gql} from "@apollo/client"
+import {useRouter} from 'next/router'
 
 const CREATE_BOARD = gql`
   mutation createBoard( $createBoardInput : CreateBoardInput!) {
@@ -16,6 +17,8 @@ const CREATE_BOARD = gql`
 
 // export function GraphqlMutationProductPage()                                                                                                           
 export default function Boards(){
+
+  const router = useRouter()
 
   const [ name, setNameChk ] = useState("")
   const [ password, setPasswordChk ] = useState("")
@@ -92,18 +95,27 @@ export default function Boards(){
       password.length !== 0 &&
       title.length !== 0 &&
       body.length !== 0){
-      const result = await createBoard({
-        variables: {
-          createBoardInput: {
-            
-              writer: name,
-              password: password,
-              title: title,
-              contents: body
-          }
+
+        try{
+          
+          const result = await createBoard({
+            variables: {
+              createBoardInput: {
+                
+                  writer: name,
+                  password: password,
+                  title: title,
+                  contents: body
+              }
+            }
+          })
+          console.log(result);
+
+          router.push(`/boards/detail/${result.data.createBoard._id}`)
+
+        } catch(error) {
+          console.log(error.message)
         }
-      })
-      console.log(result)
     }
   } 
     
@@ -153,7 +165,7 @@ export default function Boards(){
             <Box>
               <GrayBox>+<br />Upload</GrayBox>
               <GrayBox>+<br />Upload</GrayBox>
-              <GrayBox>+<br />Upload</GrayBox>
+              <GrayBox>+<br />Upl ad</GrayBox>
             </Box>
           </Photo>
           <MainSet>
@@ -162,7 +174,6 @@ export default function Boards(){
               <Radio1 type="radio" /> 유튜브
               <Radio1 type="radio" /> 사진
             </Radio>  
-            
           </MainSet>
           <Button onClick={Check}>등록하기</Button>
         </Wrapper>
