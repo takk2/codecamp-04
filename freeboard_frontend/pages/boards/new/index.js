@@ -1,5 +1,8 @@
-import {Page, Container, Wrapper, Noti, Info, Writer, Label, InputName, H1, InputPW, Password, Title, TitleBox, Body, BodyText, 
-Address, Address1, Label2, Search, Address2, Youtube, YoutubeLink, Photo, GrayBox, Box, MainSet, Radio, Radio1, Button} from '../../../styles/boards'
+import {Page, Container, Wrapper, Noti, Info, Writer, Label, InputName, H1, InputPW, 
+        Password, Title, TitleBox, Body, BodyText, Address, Address1, Label2, Search,
+        Address2, Youtube, YoutubeLink, Photo, GrayBox, Box, MainSet, Radio, Radio1, 
+        Button} from '../../../styles/boards'
+        
 import {useState} from 'react'
 import { useMutation , gql} from "@apollo/client"
 import {useRouter} from 'next/router'
@@ -15,7 +18,7 @@ const CREATE_BOARD = gql`
   }
 `
 
-// export function GraphqlMutationProductPage()                                                                                                           
+// export function GraphqlMutationProductPage()                                                                                                        
 export default function Boards(){
 
   const router = useRouter()

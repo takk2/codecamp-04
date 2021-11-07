@@ -1,109 +1,95 @@
-* {
-  margin: 0px;
-  box-sizing: border-box;
-}
+import styled from '@emotion/styled'
 
-html, body {
-  width: 100%;
-  height: 100%;
-}
-
-.container {
+export const Container = styled.div`
   width: 1200px;
   height: 1500px;
   padding: 20px 102px 80px 102px;
   border: 1px solid black;
   box-shadow: 2px 2px 2px 2px #eaeaea;
-}
+`
 
-.wrapper {
+export const Wrapper = styled.div`
   width: 996px;
   height: 1300px;
   background-color: white;
-  /* border: 1px solid black; */
-  /* box-shadow: 2px 2px 2px 2px #eaeaea; */
-}
+`
 
-.wrapper__header {
+export const WrapperHeader = styled.div`
   width: 996px;
   height: 50px;
-  /* background-color: violet; */
   display: flex;
   justify-content: flex-end;
   padding-right: 15px;
-}
+`
 
-.wrapper__header__title {
+export const WrapperHeaderTitle = styled.div`
   margin-right: 750px;
   font-size: 60px;
   line-height: 60px;
-}
+`
 
-.wrapper__header__user {
+export const WrapperHeaderUser = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 15px;
   padding-right: 5px;
-  /* margin-right: 900px; */
-}
+`
 
-.usericon {
-  font-size: 50px;
+export const UserIcon = styled.div`
+  width: 50px;
+  height:  50px;
   color:#eaeaea;
   padding-right: 10px;
-}
+`
 
-.date {
+export const Date = styled.div`
   margin-left: 5px;
   font-size: 10px;
-}
+`
 
-.username {
+export const UserName = styled.div`
   font-size: 20px;
   line-height: 20px;
-  /* margin-left: 15px; */
-}
-
-.line {
+`
+export const Line = styled.div`
   width: 996px;
   height: 2px;
   border: 1px solid #eaeaea;
   margin-top: 7px;
-  /* background-color: greenyellow; */
-}
+`
 
-.wrapper__body {
+export const WrapperBody = styled.div`
   width: 996px;
   height: 70px;
   margin-top: 10px;
-  /* background-color: green; */
-}
+`
 
-.wrapper__body__content__box {
+export const WrapperBodyContentBox = styled.div`
   width: 996px;
   height: 480px;
   display: flex;
   justify-content: space-between;
-}
+`
 
-.wrapper__body__imgbox {
+export const WrapperBodyImgBox = styled.div`
   width: 580px;
   height: 480px;
   border: 1px solid black;
-}
+`
 
-.wrapper__body__contents {
+export const WrapperBodyContents = styled.div`
   width: 400px;
   height: 480px;
+  border: 1px solid black;
   padding-top: 5px;
   padding-left: 5px;
-  font-size: 15px;
-}
+  font-size: 15px; 
+`
 
-.wrapper__body__videobox {
+export const WrapperBodyVideobox = styled.div`
   width: 486px;
   height: 240px;
   border: 1px solid black;
   margin-top: 120px;
   margin-left: 255px;
-}
+`
