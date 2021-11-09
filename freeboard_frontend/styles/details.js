@@ -18,12 +18,13 @@ export const WrapperHeader = styled.div`
   width: 996px;
   height: 50px;
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   padding-right: 15px;
 `
 
 export const WrapperHeaderTitle = styled.div`
   margin-right: 750px;
+  width: 900px;
   font-size: 60px;
   line-height: 60px;
 `

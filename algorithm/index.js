@@ -200,7 +200,7 @@ function sum(num) {
 
 function sum(num) {
 	let count = 0;
-	for(i=1, i <= num, i = i+1){
+	for(i=1; i <= num; i = i+1){
 		count += i;
 	}
 	return count;

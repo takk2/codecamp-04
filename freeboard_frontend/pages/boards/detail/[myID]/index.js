@@ -3,7 +3,7 @@ import {Container, Wrapper, WrapperHeader, WrapperHeaderTitle, WrapperHeaderUser
         from '../../../../styles/details';
 // import { useState } from "react";
 import {useQuery, gql} from '@apollo/client'
-import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 
@@ -20,7 +20,6 @@ const FETCH_BOARD = gql`
 `
 
 export default function Details(){
-//  export default () => <FontAwesomeIcon = {faUserIcon} />
   const router = useRouter();
   
   const{data} = useQuery(FETCH_BOARD, {
@@ -35,7 +34,7 @@ export default function Details(){
        <Wrapper>
         <WrapperHeader>
           <WrapperHeaderTitle>{data && data.fetchBoard.title}</WrapperHeaderTitle>
-          {/* <UserIcon>아이콘 들어갈자리</UserIcon> */}
+          <UserIcon>아이콘 들어갈자리</UserIcon>
           <WrapperHeaderUser>
             <Date>21.11.05</Date>
             <UserName> {data ? data.fetchBoard.writer:"qqq"} </UserName>

@@ -1,3 +1,4 @@
+import '../styles/reset.css'
 import '../styles/globals.css'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 
