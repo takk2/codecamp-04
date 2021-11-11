@@ -1,5 +1,6 @@
 import {Container, Wrapper, WrapperHeader, WrapperHeaderTitle, WrapperHeaderUser, UserIcon, Date, UserName, 
-        Line, WrapperBody, WrapperBodyContentBox, WrapperBodyImgBox, WrapperBodyContents, WrapperBodyVideobox}
+        Line, WrapperBody, WrapperBodyContentBox, WrapperBodyImgBox, WrapperBodyContents, WrapperBodyVideobox,
+        WrapperBtn, WrapperBtn1, WrapperBtn2, WrapperBtn3}
         from '../../../../styles/details';
 // import { useState } from "react";
 import {useQuery, gql} from '@apollo/client'
@@ -19,16 +20,30 @@ const FETCH_BOARD = gql`
   }
 `
 
+
+
 export default function Details(){
   const router = useRouter();
+
+
   
+  const ListPageBtn = () => {
+    router.push('/boards/list')
+  }
+
+  const Edit = () => {
+    router.push(`/boards/detail/${router.query.myID}/edit`)
+  }
+  
+ 
+
   const{data} = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.myID }  
   });
 
   console.log("ddd", data)
 
-  return(
+  return(     
     <>
      <Container>
        <Wrapper>
@@ -48,6 +63,11 @@ export default function Details(){
           </WrapperBodyContentBox>
           <WrapperBodyVideobox>유튜브</WrapperBodyVideobox>
         </WrapperBody>
+        <WrapperBtn>
+          <WrapperBtn1 onClick={ListPageBtn}>목록으로</WrapperBtn1>
+          <WrapperBtn2 onClick={Edit}>수정하기</WrapperBtn2>
+          <WrapperBtn3>삭제하기</WrapperBtn3>
+        </WrapperBtn>
        </Wrapper>
      </Container>
     </>

@@ -2,9 +2,9 @@ import BoardWriteUI from "./BoardWrite.presenter"
 import {useState} from 'react'
 import { useMutation } from "@apollo/client"
 import {useRouter} from 'next/router'
-import { CREATE_BOARD } from "./BoardWrite.queries"
+import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries"
 
-export default function BoardWrite(){
+export default function BoardWrite(props){
 
   const router = useRouter()
 
@@ -24,6 +24,7 @@ export default function BoardWrite(){
   // const [myContents, setMyContents] = useState("")
 
   const [ createBoard ] = useMutation( CREATE_BOARD )
+  const [ updateBoard ] = useMutation( UPDATE_BOARD )
 
   // function onChangeMyWriter(event){
   //   setMyWriter(event.target.value)
@@ -107,13 +108,34 @@ export default function BoardWrite(){
     }
   }
 
+   const Check2 = async function(){
+    try{
+          
+      const result = await updateBoard({
+        variables: {
+          updateBoardInput: {title:title, contents:body},
+          password : password,
+          boardId: router.query.myID
+        }
+      })
+      console.log(result);
+
+      router.push(`/boards/detail/${result.data.updateBoard._id}`)
+
+    } catch(error) {
+      console.log(error.message)
+    }
+  }
+
   return(
     <BoardWriteUI
       aaa={NameChk}
       bbb={PasswordChk}
       ccc={TitleChk}
       ddd={BodyChk}
-      zzz={Check}
+      zzz={Check} //등록하기
+      fff={Check2} //수정하기
+      ggg={props.isEdit}
       Error1 = {nameError}
       Error2 = {passwordError}
       Error3 = {titleError}

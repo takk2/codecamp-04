@@ -8,7 +8,7 @@ export default function BoardWriteUI(props){
   return(
     <>
       <Page>
-        <H1>게시물 등록</H1>
+        <H1>게시물 {props.ggg ? "수정" : "등록"}</H1>
         <Wrapper>
           <Container>  
             <Writer>
@@ -50,7 +50,7 @@ export default function BoardWriteUI(props){
             <Box>
               <GrayBox>+<br />Upload</GrayBox>
               <GrayBox>+<br />Upload</GrayBox>
-              <GrayBox>+<br />Upl ad</GrayBox>
+              <GrayBox>+<br />Upload</GrayBox>
             </Box>
           </Photo>
           <MainSet>
@@ -60,7 +60,7 @@ export default function BoardWriteUI(props){
               <Radio1 type="radio" /> 사진
             </Radio>  
           </MainSet>
-          <Button onClick={props.zzz}>등록하기</Button>
+          <Button onClick={props.ggg ? props.fff : props.zzz}>{props.ggg ? "수정" : "등록"}하기</Button>
         </Wrapper>
       </Page>  
     </>

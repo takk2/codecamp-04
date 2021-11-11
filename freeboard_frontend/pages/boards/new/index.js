@@ -3,9 +3,7 @@ import BoardWrite from "../../../src/componentds/units/board/write/BoardWrite.co
 
 export default function ContainerPresenterPage(){
 
-  return(
-   <BoardWrite />
-   
-  )
+  return <BoardWrite isEdit ={false} />
+  
 
 }

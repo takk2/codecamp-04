@@ -2,19 +2,31 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
+  /* height: 2000px; */
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  padding-bottom : 405px;
 `
 
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
+  /* height: 2000px; */
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 `
 
 export const WrapperHeader = styled.div`
   width: 1200px;
   height: 339px;
-  padding-top: 80px;
+  margin-top: 80px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  clear: both;
+  /* background-color: violet; */
 `
 
 export const WrapperHeaderTitle = styled.h1`
@@ -28,7 +40,7 @@ export const WrapperHeaderBest = styled.div`
   width: 1200px;
   height: 257px;
   display : flex;
-  /* background-color: yellow; */
+  /* background-color: red; */
   /* flex-direction: row; */
   justify-content: space-between;
   `
@@ -48,6 +60,7 @@ export const BestPhoto = styled.div`
   height: 120px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  background-color: skyblue;
 `
 
 export const BestTitle = styled.label`
@@ -70,11 +83,13 @@ export const BestInfo = styled.div`
 
 export const InfoWriter = styled.div`
   width: 20px;
+  display: flex;
+  flex-direction: column;
 
 `
 
 export const WriterUser = styled.div`
-  width: 73px;
+  width: 120px;
   height: 24px;
   display: flex;
   padding-top: 20px;
@@ -89,18 +104,19 @@ export const UserIcon = styled.div`
 `
 
 export const UserName = styled.label`
-  width: 45px;
+  width: 100px;
   height: 24px;
   font-size: 16px;
   font-weight: 400;
   text-align: center;
   line-height: 24px;
   padding-left: 6px;
+  text-align: left;
 `
 export const WriteDate = styled.label`
-  width: 95px;
+  width: 103px;
   height: 18px;
-  padding-top: 8px;
+  margin-top: 26px;
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
@@ -110,8 +126,9 @@ export const WriteDate = styled.label`
 export const Like = styled.div`
   width: 27px;
   height: 50px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin-right: 20px;
+  padding-top: 20px;
 `
 
 export const LikeIcon = styled.img`
@@ -121,7 +138,7 @@ export const LikeIcon = styled.img`
   padding-left: 3.5px;
 `
 
-export const LikeCounter = styled.label`
+export const LikeCounter = styled.div`
   width: 27px;
   height: 24px;
   font-size: 16px;
@@ -131,9 +148,55 @@ export const LikeCounter = styled.label`
   text-align: center;
 `
 
+export const WrapperFunction = styled.div`
+  width: 1200px;
+  height: 52px;
+  margin-top: 80px;
+  /* padding-bottom: 80px; */
+  display: flex;
+  justify-content: space-between;
+  /* background-color: yellow; */
+`
 
+export const FunctionSearch = styled.input`
+  width: 776px;
+  height: 52px;
+  padding-left: 19px;
+  border-radius: 10px;
+  background-color: #F2F2F2;
+`
 
+export const FunctionDate = styled.input`
+  width: 244px;
+  height: 52px;
+  /* padding-left: 42px; */
+  font-size: 16px;
+  font-weight: 400;
+  color: #BDBDBD;
+  line-height: 24px;
+  border: 1px solid #BDBDBD;
+  text-align: center;
+`
+export const FunctionButton = styled.button`
+  width: 94px;
+  height: 52px;
+  background-color: #000000;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+` 
 
+export const WrapperBody = styled.div`
+  width: 1200px;
+  height: 583px;
+  margin-top: 40px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  /* background-color: blue; */
+`
 
 export const BodyTab = styled.div`
   width : 1200px;
@@ -209,7 +272,7 @@ export const TabTitle1 = styled.div`
 `
 
 export const TabWriter1 = styled.div`
-  width: 60px;
+  width: 100px;
   height: 52px;
   color: 4f4f4f;
   font-size: 16px;
@@ -224,4 +287,18 @@ export const TabDate1 = styled.div`
   font-size: 16px;
   line-height: 52px;
   text-align: center;
+`
+
+export const CreatButton = styled.button`
+  width: 171px;
+  height: 52px;
+  margin-top: 40px;
+  margin-left:1030px;
+  border: 1px solid #F2F2F2;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 16px;
+  text-align: center;
+  line-height: 24px;
+  font-weight: 500;
 `

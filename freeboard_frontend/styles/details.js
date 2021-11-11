@@ -6,12 +6,16 @@ export const Container = styled.div`
   padding: 20px 102px 80px 102px;
   border: 1px solid black;
   box-shadow: 2px 2px 2px 2px #eaeaea;
+  margin: 0 auto;
 `
 
 export const Wrapper = styled.div`
   width: 996px;
-  height: 1300px;
+  max-width: 1200px;
+  margin: 0 auto;
   background-color: white;
+  display: flex;
+  flex-direction: column;
 `
 
 export const WrapperHeader = styled.div`
@@ -23,7 +27,7 @@ export const WrapperHeader = styled.div`
 `
 
 export const WrapperHeaderTitle = styled.div`
-  margin-right: 750px;
+  /* margin-right: 750px; */
   width: 900px;
   font-size: 60px;
   line-height: 60px;
@@ -93,4 +97,48 @@ export const WrapperBodyVideobox = styled.div`
   border: 1px solid black;
   margin-top: 120px;
   margin-left: 255px;
+`
+
+export const WrapperBtn = styled.div`
+  width: 585px;
+  height: 45px;
+  margin-top: 450px;
+  margin-left: 200px;
+  display: flex;
+  align-items: center;
+`
+
+export const WrapperBtn1 = styled.button`
+  width: 179px;
+  height: 45px;
+  border: 1px solid #BDBDBD;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  font-weight : 500;
+  background-color: white;
+`
+
+export const WrapperBtn2 = styled.button`
+  width: 179px;
+  height: 45px;
+  margin-left: 24px;
+  margin-right: 24px;
+  border: 1px solid #BDBDBD;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  font-weight : 500;
+  background-color: white;
+`
+
+export const WrapperBtn3 = styled.button`
+  width: 179px;
+  height: 45px;
+  border: 1px solid #BDBDBD;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  font-weight : 500;
+  background-color: white;
 `
