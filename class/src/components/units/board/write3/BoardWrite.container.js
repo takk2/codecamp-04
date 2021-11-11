@@ -64,15 +64,25 @@ export default function BoardWrite(props){
     })
     console.log(result)
     console.log(result.data.createBoard.message)
-    router.push(`/08-06-boards/${result.data.createBoard.number}`)
+    router.push(`/09-02-boards2/${result.data.createBoard.number}`)
   }  
   async function xxx(){
+    const myVariables = {
+      number: Number(router.query.myNumber)
+    }
+
+    if(myWriter !== '') myVariables.writer = myWriter
+
+    if(myTitle !== '') myVariables.title = myTitle
+
+    if(myContents !== '') myVariables.contents = myContents
+    
     // alert("수정하기 버튼을 누르셨습니다!")
     const result = await updateBoard({
-      variables: { number: Number(router.query.myNumber) ,writer: myWriter, title: myTitle, contents:myContents }
+      variables: myVariables
     })
     console.log(result)
-    router.push(`/08-06-boards/${router.query.myNumber}`)
+    router.push(`/09-02-boards2/${router.query.myNumber}`)
   }
   
   
@@ -85,6 +95,7 @@ export default function BoardWrite(props){
       qqq={myQqq}
       ggg={props.isEdit}
       xxx={xxx}//수정
+      data={props.data}
     />
 
   )

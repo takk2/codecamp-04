@@ -110,13 +110,23 @@ export default function BoardWrite(props){
 
    const Check2 = async function(){
     try{
-          
+      const myVariables = {
+        updateBoardInput: {},
+        password : password,
+        contents : body,
+        boardId: router.query.myID
+      }
+      if(name !== '') myVariables.updateBoardInput.writer = name
+      if(title !== '') myVariables.updateBoardInput.title = title
+      if(body !== '' ) myVariables.updateBoardInput.contents = body
+      
       const result = await updateBoard({
-        variables: {
-          updateBoardInput: {title:title, contents:body},
-          password : password,
-          boardId: router.query.myID
-        }
+        variables: myVariables
+        // variables: {
+        //   updateBoardInput: {title:title, contents:body},
+        //   password : password,
+        //   boardId: router.query.myID
+        // }
       })
       console.log(result);
 
@@ -140,6 +150,7 @@ export default function BoardWrite(props){
       Error2 = {passwordError}
       Error3 = {titleError}
       Error4 = {bodyError}
+      data = {props.data}
     />
   )
 
