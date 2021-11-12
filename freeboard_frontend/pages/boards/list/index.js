@@ -36,6 +36,10 @@ export default function ListPage(){
   const CreatePageBtn = () => {
     router.push('/boards/new')
   }
+
+  function select(event) {
+    router.push(`/boards/detail/${event.target.id}`);
+  }
   
 
   return(
@@ -79,9 +83,9 @@ export default function ListPage(){
             <S.TabDate>날짜</S.TabDate>
           </S.BodyTab>
           {data?.fetchBoards.map((el , index) => (
-          <S.BodyTab1>
+          <S.BodyTab1 key={el._id}>
             <S.TabNum1>{10-index}</S.TabNum1>
-            <S.TabTitle1>{el.title}</S.TabTitle1>
+            <S.TabTitle1 id={el._id} onClick={select}>{el.title}</S.TabTitle1>
             <S.TabWriter1>{el.writer}</S.TabWriter1>
             <S.TabDate1>{(el.createdAt).replaceAll("-",".").split("T")[0]}</S.TabDate1>
           </S.BodyTab1>

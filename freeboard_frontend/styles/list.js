@@ -269,6 +269,7 @@ export const TabTitle1 = styled.div`
   font-size: 16px;
   line-height: 52px;
   text-align: center;
+  :hover {color: red;};
 `
 
 export const TabWriter1 = styled.div`
