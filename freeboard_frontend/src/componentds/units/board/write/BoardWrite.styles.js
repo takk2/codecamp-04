@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import ReactPlayer from "react-player/youtube";
 
 export const Page = styled.div`
   width: 1200px;

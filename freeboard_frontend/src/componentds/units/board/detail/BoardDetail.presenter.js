@@ -30,13 +30,18 @@ export default function BoardDetailUI(props) {
                 {props.data?.fetchBoard.contents}
               </D.WrapperBodyContents>
             </D.WrapperBodyContentBox>
-            <D.WrapperBodyVideobox>유튜브</D.WrapperBodyVideobox>
+            <D.WrapperBodyVideobox url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
           </D.WrapperBody>
-          <D.WrapperBtn>
-            <D.WrapperBtn1 onClick={props.ListPageBtn}>목록으로</D.WrapperBtn1>
-            <D.WrapperBtn2 onClick={props.Edit}>수정하기</D.WrapperBtn2>
-            <D.WrapperBtn3 onClick={props.Delete}>삭제하기</D.WrapperBtn3>
-          </D.WrapperBtn>
+          <D.WrapperFooter>
+            <D.LikeBtn onClick={props.LikeBtn}></D.LikeBtn>
+            <D.WrapperBtn>
+              <D.WrapperBtn1 onClick={props.ListPageBtn}>
+                목록으로
+              </D.WrapperBtn1>
+              <D.WrapperBtn2 onClick={props.Edit}>수정하기</D.WrapperBtn2>
+              <D.WrapperBtn3 onClick={props.Delete}>삭제하기</D.WrapperBtn3>
+            </D.WrapperBtn>
+          </D.WrapperFooter>
         </D.Wrapper>
       </D.Container>
     </>

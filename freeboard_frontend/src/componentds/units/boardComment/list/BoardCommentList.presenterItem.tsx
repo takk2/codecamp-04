@@ -27,6 +27,7 @@ import {
   PasswordInput,
 } from "./BoardCommentList.styles";
 import { IBoardCommentListUIItemProps } from "./BoardCommentList.types";
+import { Rate } from "antd";
 
 export default function BoardCommentListUIItem(
   props: IBoardCommentListUIItemProps
@@ -71,6 +72,7 @@ export default function BoardCommentListUIItem(
             <MainWrapper>
               <WriterWrapper>
                 <Writer>{props.el?.writer}</Writer>
+                <Rate value={props.el?.rating} />
               </WriterWrapper>
               <Contents>{props.el?.contents}</Contents>
             </MainWrapper>

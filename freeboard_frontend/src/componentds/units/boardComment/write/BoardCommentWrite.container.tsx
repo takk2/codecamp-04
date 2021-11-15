@@ -22,17 +22,20 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
   const [myWriter, setMyWriter] = useState("");
   const [myPassword, setMyPassword] = useState("");
   const [myContents, setMyContents] = useState("");
+  const [rating, setRating] = useState(3);
 
-  const [createBoardComment] =
-    useMutation<
-      Pick<IMutation, "createBoardComment">,
-      IMutationCreateBoardCommentArgs
-    >(CREATE_BOARD_COMMENT);
-  const [updateBoardComment] =
-    useMutation<
-      Pick<IMutation, "updateBoardComment">,
-      IMutationUpdateBoardCommentArgs
-    >(UPDATE_BOARD_COMMENT);
+  function handleChange(rating: number) {
+    setRating(rating);
+  }
+
+  const [createBoardComment] = useMutation<
+    Pick<IMutation, "createBoardComment">,
+    IMutationCreateBoardCommentArgs
+  >(CREATE_BOARD_COMMENT);
+  const [updateBoardComment] = useMutation<
+    Pick<IMutation, "updateBoardComment">,
+    IMutationUpdateBoardCommentArgs
+  >(UPDATE_BOARD_COMMENT);
 
   function onChangeMyWriter(event: ChangeEvent<HTMLInputElement>) {
     setMyWriter(event.target.value);
@@ -54,14 +57,14 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
             writer: myWriter,
             password: myPassword,
             contents: myContents,
-            rating: 0,
+            rating,
           },
-          boardId: String(router.query.boardId),
+          boardId: String(router.query.boardID),
         },
         refetchQueries: [
           {
             query: FETCH_BOARD_COMMENTS,
-            variables: { boardId: router.query.boardId },
+            variables: { boardId: router.query.boardID },
           },
         ],
       });
@@ -91,7 +94,7 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
         refetchQueries: [
           {
             query: FETCH_BOARD_COMMENTS,
-            variables: { boardId: router.query.boardId },
+            variables: { boardId: router.query.boardID },
           },
         ],
       });
@@ -111,6 +114,8 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
       isEdit={props.isEdit}
       el={props.el}
       myContents={myContents}
+      handleChange={handleChange}
+      rating={rating}
     />
   );
 }

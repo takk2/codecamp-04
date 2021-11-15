@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import BoardDetailUI from "./BoardDetail.presenter";
 import { useQuery, useMutation } from "@apollo/client";
-import { FETCH_BOARD, DELETE_BOARD } from "./BoardDetail.queries";
+import { FETCH_BOARD, DELETE_BOARD, LIKE_BOARD } from "./BoardDetail.queries";
 
 export default function BoardDetails() {
   const router = useRouter();
   // console.log(router.query.myID);
   const [deleteBoard] = useMutation(DELETE_BOARD);
+  const [likeBoard] = useMutation(LIKE_BOARD);
 
   const ListPageBtn = () => {
     router.push("/boards");

@@ -10,6 +10,7 @@ import {
   Wrapper,
 } from "./BoardCommentWrite.styles";
 import { IBoardCommentWriteUIProps } from "./BoardCommentWrite.types";
+import { Rate } from "antd";
 
 export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
   return (
@@ -32,6 +33,7 @@ export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
           placeholder="비밀번호"
           onChange={props.onChangeMyPassword}
         />
+        <Rate onChange={props.handleChange} value={props.rating} />
       </InputWrapper>
       <ContentsWrapper>
         <Contents
