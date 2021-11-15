@@ -7,6 +7,7 @@ export const Container = styled.div`
   border: 1px solid black;
   box-shadow: 2px 2px 2px 2px #eaeaea;
   margin: 0 auto;
+  margin-bottom: 40px;
 `;
 
 export const Wrapper = styled.div`
@@ -23,38 +24,50 @@ export const WrapperHeader = styled.div`
   height: 50px;
   display: flex;
   /* justify-content: flex-end; */
-  padding-right: 15px;
+  /* padding-right: 15px; */
 `;
 
 export const WrapperHeaderTitle = styled.div`
-  /* margin-right: 750px; */
+  margin-left: 20px;
   width: 900px;
-  font-size: 60px;
+  font-size: 40px;
   line-height: 60px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const WrapperHeaderUser = styled.div`
+  width: 100px;
   display: flex;
   flex-direction: column;
-  padding-top: 15px;
-  padding-right: 5px;
+  /* padding-top: 0px; */
+  padding-right: 15px;
 `;
 
-export const UserIcon = styled.div`
+export const UserIcon = styled.img`
   width: 50px;
   height: 50px;
   color: #eaeaea;
-  padding-right: 10px;
+  margin-right: 15px;
 `;
 
 export const Date = styled.div`
-  margin-left: 5px;
-  font-size: 10px;
+  /* margin-left: 0px; */
+  margin-top: 3px;
+  font-size: 15px;
+  width: auto;
+  height: 20px;
 `;
 
 export const UserName = styled.div`
+  margin-top: 5px;
   font-size: 20px;
   line-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 export const Line = styled.div`
   width: 996px;
@@ -65,7 +78,7 @@ export const Line = styled.div`
 
 export const WrapperBody = styled.div`
   width: 996px;
-  height: 70px;
+  height: auto;
   margin-top: 10px;
 `;
 
@@ -87,8 +100,8 @@ export const WrapperBodyContents = styled.div`
   height: 480px;
   border: 1px solid black;
   padding-top: 5px;
-  padding-left: 5px;
-  font-size: 15px;
+  padding-left: 10px;
+  font-size: 20px;
 `;
 
 export const WrapperBodyVideobox = styled.div`
@@ -102,7 +115,7 @@ export const WrapperBodyVideobox = styled.div`
 export const WrapperBtn = styled.div`
   width: 585px;
   height: 45px;
-  margin-top: 450px;
+  margin-top: 60px;
   margin-left: 200px;
   display: flex;
   align-items: center;
@@ -149,9 +162,4 @@ export const WrapperCmts = styled.div`
   margin-top: 350px;
   border-top: 1px solid #bdbdbd;
   /* padding-left: 200px; */
-`;
-
-export const CmtsWrite = styled.div`
-  width: 1000px;
-  height: 272px;
 `;

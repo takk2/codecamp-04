@@ -71,6 +71,9 @@ export const BestTitle = styled.label`
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
+  /* text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; */
 `;
 
 export const BestInfo = styled.div`
@@ -111,6 +114,9 @@ export const UserName = styled.label`
   line-height: 24px;
   padding-left: 6px;
   text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 export const WriteDate = styled.label`
   width: 103px;
@@ -272,6 +278,9 @@ export const TabTitle1 = styled.div`
   :hover {
     color: red;
   }
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const TabWriter1 = styled.div`

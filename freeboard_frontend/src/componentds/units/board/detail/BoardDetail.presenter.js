@@ -10,9 +10,15 @@ export default function BoardDetailUI(props) {
             <D.WrapperHeaderTitle>
               {props.data?.fetchBoard.title}
             </D.WrapperHeaderTitle>
-            <D.UserIcon>아이콘 들어갈자리</D.UserIcon>
+            <D.UserIcon src="/images/avatar.png" />
             <D.WrapperHeaderUser>
-              <D.Date>{props.data?.fetchBoard.createAt}</D.Date>
+              <D.Date>
+                {
+                  props.data?.fetchBoard.createdAt
+                    .replaceAll("-", ".")
+                    .split("T")[0]
+                }
+              </D.Date>
               <D.UserName> {props.data?.fetchBoard.writer} </D.UserName>
             </D.WrapperHeaderUser>
           </D.WrapperHeader>

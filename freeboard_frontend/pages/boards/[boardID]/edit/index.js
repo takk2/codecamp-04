@@ -17,7 +17,7 @@ const FETCH_BOARD = gql`
 export default function EditPage() {
   const router = useRouter();
   const { data } = useQuery(FETCH_BOARD, {
-    variables: { _id: router.query.myID },
+    variables: { _id: router.query._id },
   });
 
   return <BoardWrite isEdit={true} data={data} />;

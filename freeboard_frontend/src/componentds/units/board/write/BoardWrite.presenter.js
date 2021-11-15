@@ -34,7 +34,7 @@ export default function BoardWriteUI(props) {
   return (
     <>
       <Page>
-        <H1>게시물 {props.ggg ? "수정" : "등록"}</H1>
+        <H1>게시물 {props.isEdit ? "수정" : "등록"}</H1>
         <Wrapper>
           <Container>
             <Writer>
@@ -111,7 +111,7 @@ export default function BoardWriteUI(props) {
               <Radio1 type="radio" /> 사진
             </Radio>
           </MainSet>
-          <Button onClick={props.isEdit ? props.Check : props.Check2}>
+          <Button onClick={props.isEdit ? props.Check2 : props.Check}>
             {props.isEdit ? "수정" : "등록"}하기
           </Button>
         </Wrapper>
