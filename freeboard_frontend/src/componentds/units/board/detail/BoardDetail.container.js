@@ -7,7 +7,7 @@ export default function BoardDetails() {
   const router = useRouter();
   // console.log(router.query.myID);
   const [deleteBoard] = useMutation(DELETE_BOARD);
-  const [likeBoard] = useMutation(LIKE_BOARD);
+  const [Like] = useMutation(LIKE_BOARD);
 
   const ListPageBtn = () => {
     router.push("/boards");
@@ -31,7 +31,15 @@ export default function BoardDetails() {
     }
   }
 
-  // console.log("ddd", data);
+  async function LikeBtn() {
+    try {
+      await Like({ variables: { boardId: router.query.boardID } });
+      alert("좋아요를 보냈습니다");
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+  console.log(data);
 
   return (
     <>
@@ -40,6 +48,7 @@ export default function BoardDetails() {
         ListPageBtn={ListPageBtn}
         Edit={Edit}
         Delete={Delete}
+        LikeBtn={LikeBtn}
       />
     </>
   );

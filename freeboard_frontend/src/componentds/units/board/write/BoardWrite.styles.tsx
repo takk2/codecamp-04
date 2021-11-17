@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import ReactPlayer from "react-player/youtube";
-
+import { Button } from "antd";
 export const Page = styled.div`
   width: 1200px;
   height: auto;
@@ -125,9 +125,10 @@ export const Address1 = styled.div`
   justify-content: left;
   margin-top: 16px;
   margin-bottom: 16px;
+  display: flex;
 `;
 
-export const Label2 = styled.input`
+export const Label2 = styled.div`
   width: 77px;
   height: 52px;
   font-size: 16px;
@@ -148,13 +149,28 @@ export const Search = styled.button`
   line-height: 24px;
   box-sizing: border-box;
 `;
-export const Address2 = styled.input`
+export const Address2 = styled.div`
   width: 996px;
   height: 52px;
-  margin-bottom: 30px;
-  padding-bottom: 30px;
+  margin-bottom: 0px;
+  padding-bottom: 25px;
+  padding-left: 10px;
   border: 1px solid #bdbdbd;
+  font-size: 20px;
+  line-height: 52px;
 `;
+export const Address3 = styled.input`
+  width: 996px;
+  height: 52px;
+  margin-top: 15px;
+  /* margin-bottom: 30px; */
+  padding-bottom: 25px;
+  padding-left: 10px;
+  border: 1px solid #bdbdbd;
+  font-size: 20px;
+  line-height: 52px;
+`;
+
 export const Youtube = styled.div`
   width: 996px;
   height: 81px;
@@ -209,7 +225,7 @@ export const Radio1 = styled.input`
   border: 1px solid #bdbdbd;
 `;
 
-export const Button = styled.button`
+export const SubmitButton = styled.button`
   width: 179px;
   height: 52px;
   background-color: #ffd600;

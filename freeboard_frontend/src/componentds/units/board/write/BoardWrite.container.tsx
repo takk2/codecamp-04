@@ -7,6 +7,24 @@ import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
 export default function BoardWrite(props) {
   const router = useRouter();
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [myAddress, setMyAddress] = useState("");
+  const [myZonecode, setMyZonecode] = useState("");
+  const [myaddressDetail, setMyAddressDetail] = useState("");
+
+  const onToggleModal = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const handleComplete = (data: any) => {
+    // console.log(data);
+
+    setMyAddress(data.address);
+    setMyZonecode(data.zonecode);
+
+    setIsOpen((prev) => !prev);
+  };
+
   const [name, setNameChk] = useState("");
   const [password, setPasswordChk] = useState("");
   const [title, setTitleChk] = useState("");
@@ -37,6 +55,9 @@ export default function BoardWrite(props) {
   // function onChangeMyContents(event){
   //   setMyContents(event.target.value)
   // }
+  function myAddressDetail(event) {
+    setMyAddressDetail(event.target.value);
+  }
 
   function NameChk(event) {
     setNameChk(event.target.value);
@@ -93,6 +114,11 @@ export default function BoardWrite(props) {
               password: password,
               title: title,
               contents: body,
+              boardAddress: {
+                zipcode: myZonecode,
+                address: myAddress,
+                addressDetail: myaddressDetail,
+              },
             },
           },
         });
@@ -112,10 +138,22 @@ export default function BoardWrite(props) {
         password: password,
         contents: body,
         boardId: router.query.boardID,
+        // boardAddress: {
+        //   zipcode: myZonecode,
+        //   address: myAddress,
+        //   addressDetail: myaddressDetail,
+        // },
       };
       if (name !== "") myVariables.updateBoardInput.writer = name;
       if (title !== "") myVariables.updateBoardInput.title = title;
       if (body !== "") myVariables.updateBoardInput.contents = body;
+      // if (myZonecode !== "")
+      //   myVariables.updateBoardInput.boardAddress.zipcode = myZonecode;
+      // if (myAddress !== "")
+      //   myVariables.updateBoardInput.boardAddress.address = myAddress;
+      // if (myaddressDetail !== "")
+      //   myVariables.updateBoardInput.boardAddress.addressDetail =
+      //     myaddressDetail;
 
       const result = await updateBoard({
         variables: myVariables,
@@ -147,6 +185,12 @@ export default function BoardWrite(props) {
       Error3={titleError}
       Error4={bodyError}
       data={props.data}
+      isOpen={isOpen}
+      myAddress={myAddress}
+      myZonecode={myZonecode}
+      onToggleModal={onToggleModal}
+      handleComplete={handleComplete}
+      myAddressDetail={myAddressDetail}
     />
   );
 }

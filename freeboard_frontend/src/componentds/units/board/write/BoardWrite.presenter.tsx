@@ -19,6 +19,7 @@ import {
   Label2,
   Search,
   Address2,
+  Address3,
   Youtube,
   YoutubeLink,
   Photo,
@@ -27,8 +28,11 @@ import {
   MainSet,
   Radio,
   Radio1,
-  Button,
+  SubmitButton,
 } from "./BoardWrite.styles";
+import { Modal } from "antd";
+import DaumPostcode from "react-daum-postcode";
+import { useState } from "react";
 
 export default function BoardWriteUI(props) {
   return (
@@ -77,11 +81,24 @@ export default function BoardWriteUI(props) {
           <Address>
             <Label>주소</Label>
             <Address1>
-              <Label2 type="text" placeholder="07250" />
-              <Search>우편번호 검색</Search>
+              <Label2>{props.myZonecode}</Label2>
+              <Search onClick={props.onToggleModal}>우편번호 검색</Search>
+              {props.isOpen && (
+                <Modal
+                  visible={true}
+                  onOk={props.onToggleModal}
+                  onCancel={props.onToggleModal}
+                >
+                  <DaumPostcode onComplete={props.handleComplete} />
+                </Modal>
+              )}
             </Address1>
-            <Address2 type="text" />
-            <Address2 type="text" />
+            <Address2>{props.myAddress}</Address2>
+            <Address3
+              type="text"
+              placeholder="상세주소를 입력해주세요."
+              onChange={props.myAddressDetail}
+            />
           </Address>
           <Youtube>
             <Label>유튜브</Label>
@@ -111,9 +128,9 @@ export default function BoardWriteUI(props) {
               <Radio1 type="radio" /> 사진
             </Radio>
           </MainSet>
-          <Button onClick={props.isEdit ? props.Check2 : props.Check}>
+          <SubmitButton onClick={props.isEdit ? props.Check2 : props.Check}>
             {props.isEdit ? "수정" : "등록"}하기
-          </Button>
+          </SubmitButton>
         </Wrapper>
       </Page>
     </>

@@ -110,13 +110,13 @@ export const WrapperBodyVideobox = styled(ReactPlayer)`
   width: 486px;
   height: 240px;
   border: 1px solid black;
-  margin-top: 120px;
-  margin-left: 180px;
+  margin: 0 auto;
+  margin-top: 20px;
 `;
 
 export const WrapperFooter = styled.div`
   margin-top: 40px;
-  background-color: violet;
+  /* background-color: violet; */
 `;
 
 export const LikeBtn = styled(LikeOutlined)`
