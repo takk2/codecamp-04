@@ -27,6 +27,7 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
   function handleChange(rating: number) {
     setRating(rating);
   }
+  console.log(rating);
 
   const [createBoardComment] = useMutation<
     Pick<IMutation, "createBoardComment">,

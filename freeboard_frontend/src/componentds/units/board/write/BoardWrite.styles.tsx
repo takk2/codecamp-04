@@ -4,7 +4,7 @@ import { Button } from "antd";
 export const Page = styled.div`
   width: 1200px;
   height: auto;
-  margin: 30px 360px 0px 360px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
