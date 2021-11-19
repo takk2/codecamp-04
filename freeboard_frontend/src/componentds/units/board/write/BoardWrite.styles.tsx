@@ -8,7 +8,6 @@ export const Page = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
 `;
 
 export const H1 = styled.h1`

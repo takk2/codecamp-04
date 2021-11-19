@@ -6,9 +6,12 @@ export const SideBar = styled.div`
   background-color: lightgray;
   position: fixed;
   float: left;
-  top: 50px;
-  left: 30px;
+  top: 200px;
+  left: 200px;
+  z-index: 100;
 
   /* position: sticky;
-  top: 0px; */
+  top: 100px;
+  float: left;
+  z-index: 100; */
 `;

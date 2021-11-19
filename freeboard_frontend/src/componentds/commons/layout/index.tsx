@@ -6,11 +6,16 @@ import Navigation from "./Navigation/navigation.container";
 import Sidebar from "./Sidebar/sidebar.container";
 import { useRouter } from "next/router";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  width: auto;
+  max-width: 1500px;
+  margin: 0 auto;
+`;
 const Body = styled.div``;
 const BodyWrapper = styled.div`
   margin: 0 auto;
   display: flex;
+  justify-content: center;
 `;
 // const Sidebar = styled.div`
 //   width: 200px;
