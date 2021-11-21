@@ -68,17 +68,17 @@ export const BestTitle = styled.label`
   height: 27px;
   font-size: 18px;
   font-weight: 500;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-  /* text-overflow: ellipsis;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap; */
+  white-space: nowrap;
 `;
 
 export const BestInfo = styled.div`
   width: 282px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   padding-left: 20px;
   display: flex;
   justify-content: space-between;
