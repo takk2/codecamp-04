@@ -11,12 +11,15 @@ const Wrapper = styled.div`
   max-width: 1500px;
   margin: 0 auto;
 `;
-const Body = styled.div``;
+
 const BodyWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: center;
 `;
+
+const Body = styled.div``;
+
 // const Sidebar = styled.div`
 //   width: 200px;
 //   height: 700px;

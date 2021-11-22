@@ -1,13 +1,19 @@
 import { useRouter } from "next/router";
 import BoardDetailUI from "./BoardDetail.presenter";
 import { useQuery, useMutation } from "@apollo/client";
-import { FETCH_BOARD, DELETE_BOARD, LIKE_BOARD } from "./BoardDetail.queries";
+import {
+  FETCH_BOARD,
+  DELETE_BOARD,
+  LIKE_BOARD,
+  DISLIKE_BOARD,
+} from "./BoardDetail.queries";
 
 export default function BoardDetails() {
   const router = useRouter();
   // console.log(router.query.myID);
   const [deleteBoard] = useMutation(DELETE_BOARD);
   const [Like] = useMutation(LIKE_BOARD);
+  const [DisLike] = useMutation(DISLIKE_BOARD);
 
   const ListPageBtn = () => {
     router.push("/boards");
@@ -39,6 +45,16 @@ export default function BoardDetails() {
       alert(error.message);
     }
   }
+
+  async function DisLikeBtn() {
+    try {
+      await DisLike({ variables: { boardId: router.query.boardID } });
+      alert("싫어요를 보냈습니다");
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
   console.log(data);
 
   return (
@@ -49,6 +65,7 @@ export default function BoardDetails() {
         Edit={Edit}
         Delete={Delete}
         LikeBtn={LikeBtn}
+        DisLikeBtn={DisLikeBtn}
       />
     </>
   );

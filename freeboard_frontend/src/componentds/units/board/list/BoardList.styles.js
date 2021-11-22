@@ -313,5 +313,5 @@ export const CreatButton = styled.button`
   font-size: 16px;
   text-align: center;
   line-height: 24px;
-  font-weight: 500;
+  font-weight: 500; 
 `;

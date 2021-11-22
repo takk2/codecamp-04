@@ -119,7 +119,13 @@ export const WrapperFooter = styled.div`
 
 export const LikeBtn = styled(LikeOutlined)`
   font-size: 50px;
-  margin-left: 470px;
+  margin-left: 420px;
+  color: #ffd600;
+`;
+
+export const DisLikeBtn = styled(LikeOutlined)`
+  font-size: 50px;
+  margin-left: 520px;
   color: #ffd600;
 `;
 

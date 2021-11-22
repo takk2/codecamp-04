@@ -1,4 +1,5 @@
 import * as S from "./BoardList.styles";
+import Paginations01 from "../../../commons/pagination/01/Paginations01.container";
 
 export default function BoardListUI(props) {
   return (
@@ -60,11 +61,12 @@ export default function BoardListUI(props) {
             ))}
           </S.WrapperBody>
           <div>
-            {/* <div class="wrapper__footer">
-            <div class="footer__left"></div>
-            <div class="footer__pagenum"></div>
-            <div class="footer__pagenum"></div>
-            <div class="footer__right"></div> */}
+            <Paginations01
+              refetch={props.refetch}
+              count={props.count}
+              startPage={props.startPage}
+              setStartPage={props.setStartPage}
+            />
             <S.CreatButton onClick={props.CreatePageBtn}>
               게시물 등록하기
             </S.CreatButton>

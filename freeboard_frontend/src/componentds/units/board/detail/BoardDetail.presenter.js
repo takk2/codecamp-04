@@ -34,6 +34,7 @@ export default function BoardDetailUI(props) {
           </D.WrapperBody>
           <D.WrapperFooter>
             <D.LikeBtn onClick={props.LikeBtn}></D.LikeBtn>
+            <D.DisLikeBtn onClick={props.DisLikeBtn}></D.DisLikeBtn>
             <D.WrapperBtn>
               <D.WrapperBtn1 onClick={props.ListPageBtn}>
                 목록으로
