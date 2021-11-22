@@ -6,7 +6,7 @@ import Slider from "react-slick";
 
 export default function BannerUI() {
   let settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -15,7 +15,7 @@ export default function BannerUI() {
 
   return (
     <>
-      <div>
+      <Banner>
         <Slider {...settings}>
           <div>
             <h3>1</h3>
@@ -36,7 +36,7 @@ export default function BannerUI() {
             <h3>6</h3>
           </div>
         </Slider>
-      </div>
+      </Banner>
     </>
   );
 }

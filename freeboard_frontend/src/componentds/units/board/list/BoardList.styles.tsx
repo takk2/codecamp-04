@@ -276,7 +276,9 @@ export const TabTitle1 = styled.div`
   line-height: 52px;
   text-align: center;
   :hover {
-    color: red;
+    color: #7a7afc;
+    font-weight: bold;
+    font-size: 20px;
   }
   text-overflow: ellipsis;
   overflow: hidden;
@@ -302,16 +304,30 @@ export const TabDate1 = styled.div`
   text-align: center;
 `;
 
+export const Footer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
+  align-items: center;
+  padding-left: 15px;
+`;
+
 export const CreatButton = styled.button`
   width: 171px;
   height: 52px;
-  margin-top: 40px;
-  margin-left: 1030px;
   border: 1px solid #f2f2f2;
   border-radius: 10px;
   background-color: white;
   font-size: 16px;
   text-align: center;
   line-height: 24px;
-  font-weight: 500; 
+  font-weight: 500;
+
+  :hover {
+    background-color: #7a7afc;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+  }
 `;

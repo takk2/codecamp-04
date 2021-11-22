@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Column = styled.span`
-  margin: 0px 50px;
+  margin: px 50px;
 `;
 
 interface IPageProps {

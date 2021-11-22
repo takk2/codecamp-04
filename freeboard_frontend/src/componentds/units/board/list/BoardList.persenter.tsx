@@ -60,7 +60,7 @@ export default function BoardListUI(props) {
               </S.BodyTab1>
             ))}
           </S.WrapperBody>
-          <div>
+          <S.Footer>
             <Paginations01
               refetch={props.refetch}
               count={props.count}
@@ -70,7 +70,7 @@ export default function BoardListUI(props) {
             <S.CreatButton onClick={props.CreatePageBtn}>
               게시물 등록하기
             </S.CreatButton>
-          </div>
+          </S.Footer>
         </S.Wrapper>
       </S.Container>
     </>

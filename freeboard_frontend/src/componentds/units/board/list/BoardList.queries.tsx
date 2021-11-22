@@ -22,3 +22,9 @@ export const FETCH_BOARDS_BEST = gql`
     }
   }
 `;
+
+export const FETCH_BOARDS_COUNT = gql`
+  query fetchBoardsCount {
+    fetchBoardsCount
+  }
+`;
