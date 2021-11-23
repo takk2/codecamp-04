@@ -14,8 +14,6 @@ const Wrapper = styled.div`
 
 const BodyWrapper = styled.div`
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
 `;
 
 const Body = styled.div``;
@@ -44,7 +42,7 @@ export default function Layout(props: ILayoutProps) {
       <Banner />
       <Navigation />
       <BodyWrapper>
-        <Sidebar></Sidebar>
+        {/* <Sidebar></Sidebar> */}
         <Body>{props.children}</Body>
       </BodyWrapper>
     </Wrapper>

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { LikeOutlined } from "@ant-design/icons";
+import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
 import ReactPlayer from "react-player/youtube";
 
 export const Container = styled.div`
@@ -114,19 +114,29 @@ export const WrapperBodyVideobox = styled(ReactPlayer)`
 
 export const WrapperFooter = styled.div`
   margin-top: 40px;
+  display: flex;
+  flex-direction: column;
   /* background-color: violet; */
+`;
+
+export const LikeWrapper = styled.div`
+  width: 1000px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 `;
 
 export const LikeBtn = styled(LikeOutlined)`
   font-size: 50px;
-  margin-left: 420px;
+  /* margin-left: 420px; */
   color: #ffd600;
 `;
 
-export const DisLikeBtn = styled(LikeOutlined)`
+export const DisLikeBtn = styled(DislikeOutlined)`
   font-size: 50px;
-  margin-left: 520px;
-  color: #ffd600;
+  margin-left: 100px;
+  color: #bdbdbd;
 `;
 
 export const WrapperBtn = styled.div`

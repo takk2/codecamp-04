@@ -33,8 +33,10 @@ export default function BoardDetailUI(props) {
             <D.WrapperBodyVideobox url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
           </D.WrapperBody>
           <D.WrapperFooter>
-            <D.LikeBtn onClick={props.LikeBtn}></D.LikeBtn>
-            <D.DisLikeBtn onClick={props.DisLikeBtn}></D.DisLikeBtn>
+            <D.LikeWrapper>
+              <D.LikeBtn onClick={props.LikeBtn}></D.LikeBtn>
+              <D.DisLikeBtn onClick={props.DisLikeBtn}></D.DisLikeBtn>
+            </D.LikeWrapper>
             <D.WrapperBtn>
               <D.WrapperBtn1 onClick={props.ListPageBtn}>
                 목록으로
