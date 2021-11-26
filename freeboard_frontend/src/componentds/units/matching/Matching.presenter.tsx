@@ -25,11 +25,12 @@ export default function MatchingUI(props) {
       />
       <button onClick={props.onClickSubmit}>등록하기</button>
       <button onClick={props.onClickFetch}>조회하기</button>
-      <div>
-        <div>{props.data.writer}</div>
-        {/* <div>{props.data}</div>
-        <div>{props.data}</div> */}
-      </div>
+      {props.data.map((e) => (
+        <div>
+          <div>{e.writer}</div>
+          <div>{e.contents}</div>
+        </div>
+      ))}
     </>
   );
 }

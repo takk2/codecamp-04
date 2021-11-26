@@ -193,6 +193,13 @@ export const Photo = styled.div`
   margin-top: 40px;
 `;
 
+export const UploadBtn = styled.input`
+  width: 78px;
+  height: 78px;
+  /* background-color: red; */
+  display: none;
+`;
+
 export const GrayBox = styled.div`
   width: 78px;
   height: 78px;

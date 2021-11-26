@@ -29,10 +29,10 @@ import {
   Radio,
   Radio1,
   SubmitButton,
+  UploadBtn,
 } from "./BoardWrite.styles";
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
-import { useState } from "react";
 
 export default function BoardWriteUI(props) {
   return (
@@ -107,18 +107,23 @@ export default function BoardWriteUI(props) {
           <Photo>
             <Label>사진첨부</Label>
             <Box>
-              <GrayBox>
+              <UploadBtn
+                type="file"
+                ref={props.fileRef}
+                onChange={props.onChangeFile}
+              />
+              <GrayBox onClick={props.onClickMyImage}>
+                +<br />
+                Upload
+              </GrayBox>
+              {/* <GrayBox>
                 +<br />
                 Upload
               </GrayBox>
               <GrayBox>
                 +<br />
                 Upload
-              </GrayBox>
-              <GrayBox>
-                +<br />
-                Upload
-              </GrayBox>
+              </GrayBox> */}
             </Box>
           </Photo>
           <MainSet>

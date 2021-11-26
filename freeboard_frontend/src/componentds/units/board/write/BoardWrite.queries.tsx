@@ -7,6 +7,7 @@ export const CREATE_BOARD = gql`
       writer
       title
       contents
+      images
       youtubeUrl
       boardAddress {
         zipcode
@@ -30,6 +31,7 @@ export const UPDATE_BOARD = gql`
     ) {
       _id
       writer
+      images
       title
       contents
       youtubeUrl
@@ -38,6 +40,14 @@ export const UPDATE_BOARD = gql`
         address
         addressDetail
       }
+    }
+  }
+`;
+
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      url
     }
   }
 `;

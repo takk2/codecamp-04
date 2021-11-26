@@ -1,11 +1,15 @@
 import BoardWriteUI from "./BoardWrite.presenter";
-import { useState } from "react";
+import { useState, ChangeEvent, useRef } from "react";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 
 export default function BoardWrite(props) {
   const router = useRouter();
+
+  const [createBoard] = useMutation(CREATE_BOARD);
+  const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const [isOpen, setIsOpen] = useState(false);
   const [myAddress, setMyAddress] = useState("");
@@ -25,6 +29,9 @@ export default function BoardWrite(props) {
     setIsOpen((prev) => !prev);
   };
 
+  const [myImages, setMyImages] = useState<string[]>([]);
+  const fileRef = useRef<HTMLInputElement>(null);
+
   const [name, setNameChk] = useState("");
   const [password, setPasswordChk] = useState("");
   const [title, setTitleChk] = useState("");
@@ -35,26 +42,6 @@ export default function BoardWrite(props) {
   const [titleError, setTitleError] = useState("");
   const [bodyError, setBodyError] = useState("");
 
-  // const [myWriter, setMyWriter] = useState("")
-  // const [myPassword, setMyPassword] = useState("")
-  // const [myTitle, setMyTitle] = useState("")
-  // const [myContents, setMyContents] = useState("")
-
-  const [createBoard] = useMutation(CREATE_BOARD);
-  const [updateBoard] = useMutation(UPDATE_BOARD);
-
-  // function onChangeMyWriter(event){
-  //   setMyWriter(event.target.value)
-  // }
-  // function onChangeMyPassword(event){
-  //   setMyPassword(event.target.value)
-  // }
-  // function onChangeMyTitle(event){
-  //   setMyTitle(event.target.value)
-  // }
-  // function onChangeMyContents(event){
-  //   setMyContents(event.target.value)
-  // }
   function myAddressDetail(event) {
     setMyAddressDetail(event.target.value);
   }
@@ -73,6 +60,39 @@ export default function BoardWrite(props) {
 
   function BodyChk(event) {
     setBodyChk(event.target.value);
+  }
+
+  function onClickMyImage() {
+    fileRef.current?.click();
+  }
+
+  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
+    const myFile = event.target.files?.[0];
+    console.log(myFile);
+
+    if (!myFile?.size) {
+      alert("사진을 선택해주세요.");
+      return;
+    }
+
+    if (myFile.size > 10 * 1024 * 1024) {
+      // 5MB이니까 5바이트, 메가바이트 해서 1024를 두번 곱해줌 기가바이트는 한번더 곱해주면 된다.
+      alert("10MB 이하의 사진파일만 업로드 가능합니다.");
+      return;
+    }
+
+    if (!myFile.type.includes("jpeg") && !myFile.type.includes("png")) {
+      alert("사진은 jpeg와 png 파일만 업로드 가능합니다.");
+      return;
+    }
+
+    const result = await uploadFile({
+      variables: {
+        file: myFile,
+      },
+    });
+    console.log(result.data.uploadFile.url);
+    setMyImages([result.data.uploadFile.url]);
   }
 
   async function Check() {
@@ -114,6 +134,7 @@ export default function BoardWrite(props) {
               password: password,
               title: title,
               contents: body,
+              images: myImages,
               boardAddress: {
                 zipcode: myZonecode,
                 address: myAddress,
@@ -138,30 +159,13 @@ export default function BoardWrite(props) {
         password: password,
         contents: body,
         boardId: router.query.boardID,
-        // boardAddress: {
-        //   zipcode: myZonecode,
-        //   address: myAddress,
-        //   addressDetail: myaddressDetail,
-        // },
       };
       if (name !== "") myVariables.updateBoardInput.writer = name;
       if (title !== "") myVariables.updateBoardInput.title = title;
       if (body !== "") myVariables.updateBoardInput.contents = body;
-      // if (myZonecode !== "")
-      //   myVariables.updateBoardInput.boardAddress.zipcode = myZonecode;
-      // if (myAddress !== "")
-      //   myVariables.updateBoardInput.boardAddress.address = myAddress;
-      // if (myaddressDetail !== "")
-      //   myVariables.updateBoardInput.boardAddress.addressDetail =
-      //     myaddressDetail;
 
       const result = await updateBoard({
         variables: myVariables,
-        // variables: {
-        //   updateBoardInput: {title:title, contents:body},
-        //   password : password,
-        //   boardId: router.query.myID
-        // }
       });
       console.log(result);
 
@@ -191,6 +195,9 @@ export default function BoardWrite(props) {
       onToggleModal={onToggleModal}
       handleComplete={handleComplete}
       myAddressDetail={myAddressDetail}
+      onChangeFile={onChangeFile}
+      fileRef={fileRef}
+      onClickMyImage={onClickMyImage}
     />
   );
 }

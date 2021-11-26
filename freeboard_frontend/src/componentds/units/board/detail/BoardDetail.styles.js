@@ -89,7 +89,7 @@ export const WrapperBodyContentBox = styled.div`
   justify-content: space-between;
 `;
 
-export const WrapperBodyImgBox = styled.div`
+export const WrapperBodyImgBox = styled.img`
   width: 580px;
   height: 480px;
   border: 1px solid black;

@@ -1,8 +1,14 @@
 import "../styles/reset.css";
 import "../styles/globals.css";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  ApolloLink,
+} from "@apollo/client";
 import "antd/dist/antd.css";
 import Layout from "../src/componentds/commons/layout";
+import { createUploadLink } from "apollo-upload-client";
 
 // -------- takk2_boards --------------
 // Import the functions you need from the SDKs you need
@@ -25,8 +31,12 @@ export const firebaseapp = initializeApp(firebaseConfig);
 
 //--------- 코드캠프 backend04 -----------
 function MyApp({ Component, pageProps }) {
-  const client = new ApolloClient({
+  const uploadLink = createUploadLink({
     uri: "http://backend04.codebootcamp.co.kr/graphql",
+  });
+
+  const client = new ApolloClient({
+    link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
 

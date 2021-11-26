@@ -25,7 +25,9 @@ export default function BoardDetailUI(props) {
           <D.Line></D.Line>
           <D.WrapperBody>
             <D.WrapperBodyContentBox>
-              <D.WrapperBodyImgBox>이미지</D.WrapperBodyImgBox>
+              <D.WrapperBodyImgBox
+                src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[0]}`}
+              ></D.WrapperBodyImgBox>
               <D.WrapperBodyContents>
                 {props.data?.fetchBoard.contents}
               </D.WrapperBodyContents>
