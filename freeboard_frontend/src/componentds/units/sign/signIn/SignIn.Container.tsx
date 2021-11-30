@@ -1,5 +1,5 @@
-import SignInUIPage from "./SignIn.presenter";
+import SignInPageUI from "./SignIn.presenter";
 
 export default function SignInPage() {
-  return <SignInUIPage />;
+  return <SignInPageUI />;
 }
