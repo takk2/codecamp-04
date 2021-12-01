@@ -35,8 +35,10 @@ export default function SignUpUIPage(props) {
           <S.InputBox
             type={"password"}
             placeholder="비밀번호를 한번 더 입력해주세요"
+            onChange={props.onChangeMyPassword}
+            // onChange={props.myPasswordChk}
           />
-          <S.Noti>올바른 비밀번호를 입력하여주세요.</S.Noti>
+          <S.Noti>{props.myPasswordChk}</S.Noti>
         </S.Wrapper__Input>
         <S.SubmitBtn onClick={props.onClickBtn}>가입하기</S.SubmitBtn>
       </S.Wrapper>

@@ -60,7 +60,7 @@ export const InputBox = styled.input`
   }
 `;
 
-export const Noti = styled.label`
+export const Noti = styled.div`
   height: 15px;
   padding-left: 10px;
   font-size: 12px;

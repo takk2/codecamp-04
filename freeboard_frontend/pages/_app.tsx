@@ -13,6 +13,7 @@ import { createUploadLink } from "apollo-upload-client";
 // -------- takk2_boards --------------
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { createContext, useState, useEffect } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -26,14 +27,28 @@ const firebaseConfig = {
   appId: "1:823636097152:web:0185ec43bce28f1b3e8e65",
 };
 
-// Initialize Firebase
 export const firebaseapp = initializeApp(firebaseConfig);
+export const GlobalContext = createContext(null);
 
-//--------- 코드캠프 backend04 -----------
 function MyApp({ Component, pageProps }) {
+  const [myAccessToken, setMyAccessToken] = useState("");
+  const [myUserInfo, setMyUserInfo] = useState("");
+  const myValue = {
+    accessToken: myAccessToken,
+    setAccessToken: setMyAccessToken,
+    userInfo: myUserInfo,
+    setUserInfo: setMyUserInfo,
+  };
+
   const uploadLink = createUploadLink({
     uri: "http://backend04.codebootcamp.co.kr/graphql",
+    headers: { authorization: `Bearer ${myAccessToken}` },
   });
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken") || "";
+    if (accessToken) setMyAccessToken(accessToken);
+  }, []);
 
   const client = new ApolloClient({
     link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
@@ -41,11 +56,13 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
-    <ApolloProvider client={client}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ApolloProvider>
+    <GlobalContext.Provider value={myValue}>
+      <ApolloProvider client={client}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ApolloProvider>
+    </GlobalContext.Provider>
   );
 }
 

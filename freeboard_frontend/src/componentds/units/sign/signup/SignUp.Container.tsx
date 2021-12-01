@@ -2,6 +2,7 @@ import SignUpUIPage from "./SignUp.presenter";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "./SignUp.query";
 import { ChangeEvent, useState } from "react";
+import { HtmlProps } from "next/dist/shared/lib/utils";
 
 export default function SignUpPage() {
   const [createUser] = useMutation(CREATE_USER);
@@ -11,6 +12,7 @@ export default function SignUpPage() {
     name: "",
     password: "",
   });
+  const [passwordCheck, setMyPasswordCheck] = useState("");
 
   const [myEmailError, setMyEmailError] = useState("");
   const [myNameError, setMyNameError] = useState("");
@@ -18,20 +20,28 @@ export default function SignUpPage() {
   const [myPasswordChk, setMyPasswordChk] = useState("");
 
   function onChangeMyInputs(event: ChangeEvent<HTMLInputElement>) {
-    // console.log(setMyInputs);
-    if (!/\w+@\w+\.\w+/.test(myInputs.email)) {
-      setMyEmailError("이메일 형식이 올바르지 않습니다.");
-    }
-
-    if (myInputs.password) {
-      setMyPasswordChk("비밀번호가 일치하지 않습니다.");
-    }
+    // if (!/\w+@\w+\.\w+/.test(myInputs.email)) {
+    //   setMyEmailError("이메일 형식이 올바르지 않습니다.");
+    // }
     setMyInputs({
       ...myInputs,
       [event.target.name]: event.target.value,
     });
+
+    if (myInputs.email) setMyEmailError("");
+    if (myInputs.name) setMyNameError("");
+    if (myInputs.password) setMyPasswordError("");
   }
+
+  function onChangeMyPassword(event: ChangeEvent<HTMLInputElement>) {
+    setMyPasswordCheck(event.target.value);
+    if (onChangeMyPassword) setMyPasswordChk("");
+  }
+
   async function onClickBtn() {
+    if (!/\w+@\w+\.\w+/.test(myInputs.email)) {
+      setMyEmailError("이메일 형식이 올바르지 않습니다.");
+    }
     if (!myInputs.email) {
       setMyEmailError("이메일을 입력해주세요.");
     }
@@ -40,6 +50,9 @@ export default function SignUpPage() {
     }
     if (!myInputs.password) {
       setMyPasswordError("비밀번호를 입력해주세요.");
+    }
+    if (myInputs.password !== passwordCheck) {
+      setMyPasswordChk("비밀번호가 일치하지 않습니다.");
     }
     try {
       const result = await createUser({
@@ -53,10 +66,12 @@ export default function SignUpPage() {
   return (
     <SignUpUIPage
       onChangeMyInputs={onChangeMyInputs}
+      onChangeMyPassword={onChangeMyPassword}
       onClickBtn={onClickBtn}
       myEmailError={myEmailError}
       myNameError={myNameError}
       myPasswordError={myPasswordError}
+      myPasswordChk={myPasswordChk}
     />
   );
 }

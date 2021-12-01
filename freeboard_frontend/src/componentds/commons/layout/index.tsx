@@ -38,11 +38,12 @@ export default function Layout(props: ILayoutProps) {
 
   return (
     <Wrapper>
-      <Header />
+      <Header>
+        <Navigation></Navigation>
+      </Header>
       <Banner />
-      <Navigation />
       <BodyWrapper>
-        {/* <Sidebar></Sidebar> */}
+        <Sidebar />
         <Body>{props.children}</Body>
       </BodyWrapper>
     </Wrapper>

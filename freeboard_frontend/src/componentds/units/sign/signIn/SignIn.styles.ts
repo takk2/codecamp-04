@@ -56,7 +56,7 @@ export const StayLogin = styled.label`
 `;
 
 export const SignInBtn = styled.button`
-  width: 150px;
+  width: 384px;
   height: 50px;
   margin-top: 50px;
   background-color: white;
@@ -64,7 +64,21 @@ export const SignInBtn = styled.button`
   font-size: 15px;
   font-weight: 700;
   :hover {
-    background-color: #81daf5;
+    background-color: #5882fa;
+    color: white;
+  }
+`;
+
+export const SignUpBtn = styled.button`
+  width: 384px;
+  height: 50px;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  :hover {
+    background-color: #5882fa;
     color: white;
   }
 `;
