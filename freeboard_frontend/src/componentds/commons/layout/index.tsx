@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 const Wrapper = styled.div`
   width: auto;
-  max-width: 1500px;
+  max-width: 1920px;
   margin: 0 auto;
 `;
 
@@ -38,12 +38,9 @@ export default function Layout(props: ILayoutProps) {
 
   return (
     <Wrapper>
-      <Header>
-        <Navigation></Navigation>
-      </Header>
+      <Header />
       <Banner />
       <BodyWrapper>
-        <Sidebar />
         <Body>{props.children}</Body>
       </BodyWrapper>
     </Wrapper>

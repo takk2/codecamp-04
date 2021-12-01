@@ -1,4 +1,4 @@
-import { Banner } from "./banner.styles";
+import { Banner, Img } from "./banner.styles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React, { Component } from "react";
@@ -11,6 +11,9 @@ export default function BannerUI() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    // cssEase: "linear",
   };
 
   return (
@@ -18,22 +21,22 @@ export default function BannerUI() {
       <Banner>
         <Slider {...settings}>
           <div>
-            <h3>1</h3>
+            <Img src={"/images/slider/slider_1.png"} />
           </div>
           <div>
-            <h3>2</h3>
+            <Img src={"/images/slider/slider_2.png"} />
           </div>
           <div>
-            <h3>3</h3>
+            <Img src={"/images/slider/slider_3.png"} />
           </div>
           <div>
-            <h3>4</h3>
+            <Img src={"/images/slider/slider_4.png"} />
           </div>
           <div>
-            <h3>5</h3>
+            <Img src={"/images/slider/slider_5.png"} />
           </div>
           <div>
-            <h3>6</h3>
+            <Img src={"/images/slider/slider_6.png"} />
           </div>
         </Slider>
       </Banner>
