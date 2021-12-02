@@ -1,14 +1,14 @@
 import styled from "@emotion/styled";
 
 export const Header = styled.div`
-  height: 130px;
+  height: 70px;
   background-color: white;
   margin-bottom: 20px;
   /* font-size: 40px; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom: 2px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -16,13 +16,13 @@ export const Header = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 220px;
-  height: 100px;
+  width: 130px;
+  height: 60px;
   margin-bottom: 10px;
 `;
 
 export const Navbox = styled.div`
-  width: 1300px;
+  width: 1000px;
   height: 80px;
   /* margin-top: 20px; */
   display: flex;
@@ -34,7 +34,7 @@ export const Navbox = styled.div`
 export const Navtab = styled.span`
   width: 200px;
   height: 70px;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 70px;
   text-align: center;
   /* font-weight: 700; */
@@ -57,7 +57,7 @@ export const SignupBox = styled.div`
 export const Login = styled.button`
   width: 100px;
   height: 30px;
-  font-size: 18px;
+  font-size: 12px;
   /* background-color: yellow; */
   border: none;
   background-color: white;
@@ -70,7 +70,7 @@ export const Login = styled.button`
 export const Signup = styled.button`
   width: 100px;
   height: 30px;
-  font-size: 18px;
+  font-size: 12px;
   /* background-color: yellow; */
   border: none;
   background-color: white;
