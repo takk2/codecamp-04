@@ -2,9 +2,11 @@ import SignUpUIPage from "./SignUp.presenter";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "./SignUp.query";
 import { ChangeEvent, useState } from "react";
-import { HtmlProps } from "next/dist/shared/lib/utils";
+import { useRouter } from "next/router";
 
 export default function SignUpPage() {
+  const router = useRouter();
+
   const [createUser] = useMutation(CREATE_USER);
 
   const [myInputs, setMyInputs] = useState({
@@ -61,6 +63,8 @@ export default function SignUpPage() {
     } catch (error) {
       console.log(error.message);
     }
+    alert("회원가입에 성공하였습니다, 로그인 페이지로 이동합니다.");
+    router.push("/sign/signin");
   }
 
   return (

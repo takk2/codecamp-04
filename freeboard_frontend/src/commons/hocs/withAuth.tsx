@@ -9,7 +9,7 @@ export const withAuth = (Component) => (props) => {
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       alert("로그인이 필요합니다.");
-      router.push("../../components/units/sign/signIn");
+      router.push("/sign/signin");
     }
   }, []);
 
