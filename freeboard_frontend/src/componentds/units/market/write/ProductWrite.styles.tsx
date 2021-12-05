@@ -14,8 +14,12 @@ export const Wrapper = styled.div`
 
 export const Header = styled.label`
   width: 100%;
-  height: 50px;
+  height: 70px;
+  margin-top: 70px;
+  margin-bottom: 20px;
   font-size: 40px;
+  text-align: center;
+  line-height: 70px;
 `;
 
 export const Body = styled.div`
@@ -25,6 +29,13 @@ export const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const SubTitle = styled.div`
+  width: 100px;
+  height: 40px;
+  font-size: 30px;
+  line-height: 40px;
 `;
 
 export const Body__ProductName = styled.input`
