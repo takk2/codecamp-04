@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { TextField } from "@mui/material";
 
 export const Wrapper = styled.div`
   width: 1000px;
@@ -6,7 +7,7 @@ export const Wrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding-bottom: 100px;
-  background-color: lightyellow;
+  /* background-color: lightyellow; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +17,7 @@ export const Header = styled.label`
   width: 100%;
   height: 70px;
   margin-top: 70px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   font-size: 40px;
   text-align: center;
   line-height: 70px;
@@ -25,36 +26,47 @@ export const Header = styled.label`
 export const Body = styled.div`
   width: 100%;
   height: auto;
-  background-color: skyBlue;
+  /* background-color: skyBlue; */
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const SubTitle = styled.div`
-  width: 100px;
-  height: 40px;
-  font-size: 30px;
-  line-height: 40px;
+export const Body__InputWrapper1 = styled.div`
+  width: 100%;
+  height: 60px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 `;
 
-export const Body__ProductName = styled.input`
-  font-size: 20px;
+export const InputBox = styled(TextField)`
+  width: 470px;
+  font-size: 15px;
 `;
 
-export const Body__Contents = styled.textarea`
+export const Body__InputWrapper2 = styled.div`
+  width: 100%;
+  height: 150px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MaxInputBox = styled(TextField)`
+  width: 100%;
+  font-size: 15px;
+  margin-bottom: 20px;
+`;
+
+export const Body__Contents = styled(TextField)`
   width: 100%;
   height: 400px;
 `;
 
-export const Body__Price = styled.input`
-  font-size: 20px;
-`;
-
 export const Body__Fileupload = styled.div`
   width: 100%;
-  height: 300px;
-  border: 1px solid #000000;
+  height: 100px;
 `;
 
 export const Body__Maps = styled.div`
@@ -66,4 +78,5 @@ export const Body__Maps = styled.div`
 export const SubmitBtn = styled.button`
   width: 300px;
   height: 30px;
+  margin-top: 100px;
 `;
