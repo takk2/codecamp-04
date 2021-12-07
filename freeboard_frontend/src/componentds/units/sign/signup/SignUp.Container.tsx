@@ -62,9 +62,10 @@ export default function SignUpPage() {
       });
     } catch (error) {
       console.log(error.message);
+      console.log(myInputs);
     }
     alert("회원가입에 성공하였습니다, 로그인 페이지로 이동합니다.");
-    router.push("/sign/signin");
+    // router.push("/sign/signin");
   }
 
   return (

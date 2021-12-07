@@ -30,17 +30,22 @@ export default function SignInPage() {
 
   async function onClickLogin() {
     console.log(myEmail, myPassword);
-    const result = await loginUser({
-      variables: {
-        email: myEmail,
-        password: myPassword,
-      },
-    });
-    localStorage.setItem(
-      "accessToken",
-      result.data?.loginUser.accessToken || ""
-    );
-    setAccessToken(result.data?.loginUser.accessToken || ""); // 여기서 setAccessToken 필요! (글로벌 스테이트에...)
+    try {
+      const result = await loginUser({
+        variables: {
+          email: myEmail,
+          password: myPassword,
+        },
+      });
+      localStorage.setItem(
+        "accessToken",
+        result.data?.loginUser.accessToken || ""
+      );
+      setAccessToken(result.data?.loginUser.accessToken || ""); // 여기서 setAccessToken 필요! (글로벌 스테이트에...)
+      // console.log(result);
+    } catch (error) {
+      alert(error.message);
+    }
 
     // const result = await axios.get("koreanjson.com/posts/1") 이러한 방식으로 우너하는 곳에서 useApolloClient 사용
     // const result = fetchUserLoggedIn()
