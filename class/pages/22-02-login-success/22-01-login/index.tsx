@@ -4,7 +4,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import {
   IMutation,
   IMutationLoginUserArgs,
-} from "../../src/commons/types/generated/types";
+} from "../../../src/commons/types/generated/types";
 import { GlobalContext } from "../_app";
 
 const LOGIN_USER = gql`

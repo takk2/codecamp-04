@@ -17,10 +17,18 @@ export default function ProductWritePage(props) {
   });
 
   function onChangeMyInputs(event) {
-    setMyInputs({
-      ...myInputs,
-      [event.target.name]: event.target.value,
-    });
+    if (event.target.name === "price") {
+      setMyInputs({
+        ...myInputs,
+        [event.target.name]: Number(event.target.value),
+      });
+    } else {
+      setMyInputs({
+        ...myInputs,
+        [event.target.name]: event.target.value,
+      });
+    }
+
     if (myInputs.name) setMyTitleError("");
     if (myInputs.price) setMyPriceError("");
     if (myInputs.remarks) setMyRemarksError("");
