@@ -9,7 +9,7 @@ export default function ProductListPageUI(props) {
           <span>{el.remarks}</span>
           <span>{el.contents}</span>
           <span>{el.price}</span>
-          <span>{getDate(el.createAt)}</span>
+          <span>{getDate(el.createdAt)}</span>
         </div>
       ))}
     </>

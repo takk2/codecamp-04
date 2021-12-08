@@ -71,7 +71,7 @@ export default function ProductWritePage(props) {
     // console.log(myInputs);
     try {
       const result = await createUseditem({
-        variables: { createUseditem: { ...myInputs } },
+        variables: { createUseditemInput: { ...myInputs } },
       });
       // console.log(myInputs.name);
       // console.log(myInputs.price);
