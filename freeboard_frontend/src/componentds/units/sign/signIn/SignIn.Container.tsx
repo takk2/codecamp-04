@@ -1,6 +1,6 @@
 import SignInPageUI from "./SignIn.presenter";
 import { useMutation } from "@apollo/client";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import { ChangeEvent, useContext, useState } from "react";
 import {
   IMutation,
@@ -8,58 +8,47 @@ import {
 } from "../../../../../src/commons/types/generated/types";
 import { GlobalContext } from "../../../../../pages/_app";
 import { LOGIN_USER } from "./SignIn.query";
+import { useForm } from "react-hook-form";
+import { schema } from "./SignIn.validations";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import { FormValues } from "./SignIn.types";
 
 export default function SignInPage() {
+  const [loginUser] = useMutation(LOGIN_USER);
   const { setAccessToken } = useContext(GlobalContext);
   const router = useRouter();
 
-  const [myEmail, setMyEmail] = useState("");
-  const [myPassword, setMyPassword] = useState("");
-  const [loginUser] = useMutation<
-    Pick<IMutation, "loginUser">,
-    IMutationLoginUserArgs
-  >(LOGIN_USER);
+  const { handleSubmit, register, formState } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(schema),
+  });
 
-  function onChangeMyEmail(event: ChangeEvent<HTMLInputElement>) {
-    setMyEmail(event.target.value);
-  }
-
-  function onChangeMyPassword(event: ChangeEvent<HTMLInputElement>) {
-    setMyPassword(event.target.value);
-  }
-
-  async function onClickLogin() {
-    console.log(myEmail, myPassword);
+  const onClickLogin = async (data: FormValues) => {
     try {
       const result = await loginUser({
         variables: {
-          email: myEmail,
-          password: myPassword,
+          email: data.email,
+          password: data.password,
         },
       });
+      console.log(result);
       localStorage.setItem(
         "accessToken",
         result.data?.loginUser.accessToken || ""
       );
-      setAccessToken(result.data?.loginUser.accessToken || ""); // 여기서 setAccessToken 필요! (글로벌 스테이트에...)
-      // console.log(result);
+      setAccessToken?.(result.data?.loginUser.accessToken || "");
+      router.push("/sign/success");
     } catch (error) {
-      alert(error.message);
+      error.message;
     }
-
-    // const result = await axios.get("koreanjson.com/posts/1") 이러한 방식으로 우너하는 곳에서 useApolloClient 사용
-    // const result = fetchUserLoggedIn()
-    // setUserInfo(result.data?.fetchUserLoggedIn)
-
-    // 로그인 성공된 페이지로 이동시키기!
-    router.push("/sign/success");
-  }
+  };
 
   return (
     <SignInPageUI
       onClickLogin={onClickLogin}
-      onChangeMyEmail={onChangeMyEmail}
-      onChangeMyPassword={onChangeMyPassword}
+      handleSubmit={handleSubmit}
+      register={register}
+      formState={formState}
     />
   );
 }

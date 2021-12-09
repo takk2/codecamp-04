@@ -73,10 +73,6 @@ export default function ProductWritePage(props) {
       const result = await createUseditem({
         variables: { createUseditemInput: { ...myInputs } },
       });
-      // console.log(myInputs.name);
-      // console.log(myInputs.price);
-      // console.log(myInputs.remarks);
-      // console.log(myInputs.contents);
       console.log(result);
       alert("상품등록이 완료되었습니다.");
     } catch (error) {
