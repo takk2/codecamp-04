@@ -5,6 +5,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import {
   IMutation,
   IMutationLoginUserArgs,
+  IMutationLoginUserExampleArgs,
 } from "../../../../../src/commons/types/generated/types";
 import { GlobalContext } from "../../../../../pages/_app";
 import { LOGIN_USER } from "./SignIn.query";
@@ -14,9 +15,13 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { FormValues } from "./SignIn.types";
 
 export default function SignInPage() {
-  const [loginUser] = useMutation(LOGIN_USER);
   const { setAccessToken } = useContext(GlobalContext);
   const router = useRouter();
+
+  const [loginUser] = useMutation<
+    Pick<IMutation, "loginUserExample">,
+    IMutationLoginUserExampleArgs
+  >(LOGIN_USER);
 
   const { handleSubmit, register, formState } = useForm({
     mode: "onChange",
@@ -32,11 +37,13 @@ export default function SignInPage() {
         },
       });
       console.log(result);
-      localStorage.setItem(
-        "accessToken",
-        result.data?.loginUser.accessToken || ""
-      );
-      setAccessToken?.(result.data?.loginUser.accessToken || "");
+
+      // localStorage.setItem(
+      //   "accessToken",
+      //   result.data?.loginUser.accessToken || ""
+      // );
+      localStorage.setItem("refreshToken", "true");
+      setAccessToken?.(result.data?.loginUserExample.accessToken || "");
       router.push("/sign/success");
     } catch (error) {
       error.message;
