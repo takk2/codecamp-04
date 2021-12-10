@@ -3,7 +3,9 @@ import {
   ApolloProvider,
   InMemoryCache,
   ApolloLink,
+  gql,
 } from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
 import { Global } from "@emotion/react";
 import "antd/dist/antd.css";
 import { globalStyles } from "../src/commons/styles/globalStyles";
@@ -13,6 +15,9 @@ import { createUploadLink } from "apollo-upload-client";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { createContext, useEffect, useState } from "react";
+import { includes } from "lodash";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
+
 // import Head from "next/head";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -42,17 +47,47 @@ function MyApp({ Component, pageProps }) {
   };
 
   const uploadLink = createUploadLink({
-    uri: "http://backend04.codebootcamp.co.kr/graphql",
+    uri: "https://backend04.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${myAccessToken}` },
+    credentials: "include",
   });
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken") || "";
-    if (accessToken) setMyAccessToken(accessToken);
+    // const accessToken = localStorage.getItem("accessToken") || "";
+    // if (accessToken) setMyAccessToken(accessToken);
+    if (localStorage.getItem("refreshToken")) getAccessToken(setMyAccessToken);
   }, []);
 
+  const RESTORE_ACCESS_TOKEN = gql`
+    mutation restoreAccessToken {
+      restoreAccessToken {
+        accessToken
+      }
+    }
+  `;
+
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        // 1. 토큰만료 에러를 캐치
+        if (err.extensions?.code === "UNAUTHENTICATED") {
+          const newAccessToken = getAccessToken(setMyAccessToken); // 2. refreshToken으로 accessToken 재발급 받기 => restoreAccessToken
+          // 3. 기존에 실패한 요청 다시 재요청하기
+          operation.setContext({
+            headers: {
+              ...operation.getContext().heafers,
+              authorization: `Bearer ${newAccessToken}`,
+            },
+          });
+
+          return forward(operation);
+        }
+      }
+    }
+  });
+
   const client = new ApolloClient({
-    link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
+    link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
 
