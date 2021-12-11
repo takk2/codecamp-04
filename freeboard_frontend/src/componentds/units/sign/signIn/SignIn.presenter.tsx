@@ -14,13 +14,13 @@ export default function SignInPageUI(props: any) {
             placeholder="이메일"
             {...props.register("email")}
           />
-          {/* <div>{props.formState.errors.email?.message}</div> */}
+          <div>{props.formState.errors.email?.message}</div>
           <A.Input
             type="password"
             placeholder="비밀번호"
             {...props.register("password")}
           />
-          {/* <div>{props.formState.errors.password?.message}</div> */}
+          <div>{props.formState.errors.password?.message}</div>
           <A.Radio__Wrapper>
             <A.Radio type="checkbox" />
             <A.StayLogin>로그인 상태 유지하기</A.StayLogin>
