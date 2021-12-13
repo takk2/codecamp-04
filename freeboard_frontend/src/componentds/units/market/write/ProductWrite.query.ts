@@ -8,6 +8,15 @@ export const CREATE_USEDITEM = gql`
       remarks
       contents
       price
+      tags
+      images
+      useditemAddress {
+        _id
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
     }
   }
 `;

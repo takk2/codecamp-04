@@ -19,7 +19,7 @@ export default function SignInPage() {
   const router = useRouter();
 
   const [loginUser] = useMutation<
-    Pick<IMutation, "loginUserExample">,
+    Pick<IMutation, "loginUser">,
     IMutationLoginUserExampleArgs
   >(LOGIN_USER);
 
@@ -36,14 +36,15 @@ export default function SignInPage() {
           password: data.password,
         },
       });
-      console.log(result);
+      console.log(data);
+      console.log("Token", result);
 
       // localStorage.setItem(
       //   "accessToken",
       //   result.data?.loginUser.accessToken || ""
       // );
       localStorage.setItem("refreshToken", "true");
-      setAccessToken?.(result.data?.loginUserExample.accessToken || "");
+      setAccessToken?.(result.data?.loginUser.accessToken || "");
       router.push("/sign/success");
     } catch (error) {
       error.message;
