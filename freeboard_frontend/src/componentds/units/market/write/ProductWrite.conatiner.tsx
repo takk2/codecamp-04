@@ -1,19 +1,21 @@
 import { useMutation } from "@apollo/client";
+import router from "next/router";
 import { useEffect, useState } from "react";
 import ProductWriteUI from "./ProductWrite.presenter";
-import { CREATE_USEDITEM } from "./ProductWrite.query";
+import { CREATE_USEDITEM, UPLOAD_FILE } from "./ProductWrite.query";
 
 export default function ProductWritePage(props) {
   // ===== CreateUsedItem =====
   const [createUseditem] = useMutation(CREATE_USEDITEM);
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
   const [myInputs, setMyInputs] = useState({
     name: "",
     remarks: "",
     contents: "",
     price: 0,
-    // tags: [],
     // images: [],
+    // tags: [],
   });
 
   function onChangeMyInputs(event) {
@@ -35,7 +37,6 @@ export default function ProductWritePage(props) {
     if (myInputs.contents) setMyContentsError("");
   }
   // ===== FileUpLoad =====
-  const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
   function onChangeFileUrls(fileUrl: string, index: number) {
     const newFileUrls = [...fileUrls];
@@ -43,11 +44,11 @@ export default function ProductWritePage(props) {
     setFileUrls(newFileUrls);
   }
 
-  // useEffect(() => {
-  //   if (props.data?.fetchBoard.images?.length) {
-  //     setFileUrls([...props.data?.fetchBoard.images]);
-  //   }
-  // }, [props.data]);
+  useEffect(() => {
+    if (props.data?.fetchUseditem.images?.length) {
+      setFileUrls([...props.data?.fetchUseditem.images]);
+    }
+  }, [props.data]);
 
   // ===== onClickSubmitBtn =====
   const [myTitleError, setMyTitleError] = useState("");
@@ -55,7 +56,7 @@ export default function ProductWritePage(props) {
   const [myRemarksError, setMyRemarksError] = useState("");
   const [myContentsError, setMyContentsError] = useState("");
 
-  async function onClickSubmitBtn() {
+  async function onClickSubmitBtn(event) {
     // if (!myInputs.name) {
     //   setMyTitleError("상품명을 입력해주세요.");
     // }
@@ -71,12 +72,15 @@ export default function ProductWritePage(props) {
     // console.log(myInputs);
     try {
       const result = await createUseditem({
-        variables: { createUseditemInput: { ...myInputs } },
+        variables: {
+          createUseditemInput: { ...myInputs, images: [...fileUrls] },
+        },
       });
       console.log(result);
       alert("상품등록이 완료되었습니다.");
     } catch (error) {
       console.log(error.message);
+      // router.push("/market");
     }
   }
   return (

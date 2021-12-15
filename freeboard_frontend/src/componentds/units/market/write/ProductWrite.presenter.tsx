@@ -1,6 +1,7 @@
 import * as M from "./ProductWrite.styles";
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 import { v4 as uuidv4 } from "uuid";
+import MapsPage from "../../../commons/maps/Maps.container";
 
 export default function ProductWriteUI(props) {
   return (
@@ -64,12 +65,12 @@ export default function ProductWriteUI(props) {
                 key={uuidv4()}
                 index={index}
                 fileUrl={el}
-                defaultFileUrl={props.data?.fetchBoard.images?.[index]}
+                defaultFileUrl={props.data?.fetchUseditem.images?.[index]}
                 onChangeFileUrls={props.onChangeFileUrls}
               />
             ))}
           </M.Body__Fileupload>
-          거래 위치<M.Body__Maps></M.Body__Maps>
+          <MapsPage />
           <M.SubmitBtn onClick={props.onClickSubmitBtn}>등록하기</M.SubmitBtn>
         </M.Body>
       </M.Wrapper>

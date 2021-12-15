@@ -12,6 +12,8 @@ export const CREATE_USEDITEM = gql`
       images
       useditemAddress {
         _id
+        zipcode
+        address
         createdAt
         updatedAt
       }
