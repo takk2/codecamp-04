@@ -17,6 +17,7 @@ import { initializeApp } from "firebase/app";
 import { createContext, useEffect, useState } from "react";
 import { includes } from "lodash";
 import { getAccessToken } from "../src/commons/libraries/getAccessToken";
+import * as Sentry from "@sentry/nextjs";
 
 // import Head from "next/head";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -34,6 +35,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const firebaseApp = initializeApp(firebaseConfig);
+
+Sentry.init({
+  dsn: "https://fa2e79d4cae347069d6c589b5ba00382@o1091872.ingest.sentry.io/6109514",
+});
 
 export const GlobalContext = createContext(null);
 function MyApp({ Component, pageProps }) {
