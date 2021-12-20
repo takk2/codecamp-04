@@ -1,3 +1,4 @@
+import MapsLoadPage from "../../../commons/mapsLoad/mapsLoad";
 import * as D from "./ProductDetail.styles";
 
 export default function ProductDetailPageUI(props) {
@@ -32,6 +33,7 @@ export default function ProductDetailPageUI(props) {
               </D.WrapperBodyContents>
             </D.WrapperBodyContentBox>
           </D.WrapperBody>
+          <MapsLoadPage data={props.data} />
           <D.WrapperFooter>
             <D.WrapperBtn>
               <D.WrapperBtn1 onClick={props.onClickListBtn}>

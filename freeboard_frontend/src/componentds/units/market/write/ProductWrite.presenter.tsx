@@ -4,10 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 import MapsPage from "../../../commons/maps/Maps.container";
 
 export default function ProductWriteUI(props) {
+  // console.log(props);
   return (
     <>
       <M.Wrapper>
-        <M.Header>상품 등록</M.Header>
+        <M.Header>상품 {props.isEdit ? "수정" : "등록"}</M.Header>
         <M.Body>
           <M.Body__InputWrapper1>
             <M.InputBox
@@ -70,8 +71,10 @@ export default function ProductWriteUI(props) {
               />
             ))}
           </M.Body__Fileupload>
-          <MapsPage />
-          <M.SubmitBtn onClick={props.onClickSubmitBtn}>등록하기</M.SubmitBtn>
+          <MapsPage setPropsAddress={props.setPropsAddress} />
+          <M.SubmitBtn onClick={props.onClickSubmitBtn}>
+            {props.IsEdit ? "수정" : "등록"}하기
+          </M.SubmitBtn>
         </M.Body>
       </M.Wrapper>
     </>

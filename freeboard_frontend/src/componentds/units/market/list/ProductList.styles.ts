@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const WrapperHeaderBest = styled.div`
   width: 1200px;
   height: 257px;
+  margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   /* background-color: red; */
@@ -35,7 +36,7 @@ export const BestTitle = styled.label`
   font-weight: 500;
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

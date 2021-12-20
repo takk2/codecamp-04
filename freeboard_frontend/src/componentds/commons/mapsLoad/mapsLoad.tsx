@@ -32,7 +32,7 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function MapsPage(props) {
+export default function MapsLoadPage(props) {
   // console.log(props);
   const [isOpen, setIsOpen] = useState(false);
   const [myAddress, setMyAddress] = useState("");
@@ -50,14 +50,14 @@ export default function MapsPage(props) {
         const mapContainer = document.getElementById("map");
         const mapOption = {
           center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-          level: 1,
+          level: 2,
         };
         const map = new window.kakao.maps.Map(mapContainer, mapOption);
 
         const geocoder = new window.kakao.maps.services.Geocoder();
 
         geocoder.addressSearch(
-          `${myAddress}`, //검색한 주소 입력
+          props.data?.fetchUseditem.useditemAddress?.address, //검색한 주소 입력
           function (result, status) {
             if (status === window.kakao.maps.services.Status.OK) {
               const coords = new window.kakao.maps.LatLng(
@@ -83,7 +83,7 @@ export default function MapsPage(props) {
         );
       });
     };
-  }, [myAddress]);
+  }, [props.data]);
 
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
@@ -103,12 +103,10 @@ export default function MapsPage(props) {
         <MapsInner>
           <Maps id="map" style={{ width: "500px", height: "400px" }}></Maps>
           <Wrapper__Address>
-            <Button onClick={onToggleModal}>우편번호 검색</Button>
             <div>
-              거래장소: {myAddress}
-              {myAddressDetail}
+              거래장소: {props.data?.fetchUseditem.useditemAddress?.address}
             </div>
-            <div>내우편번호: {myZonecode}</div>
+            {/* <div>내우편번호: {myZonecode}</div> */}
             {isOpen && (
               <Modal
                 visible={true}

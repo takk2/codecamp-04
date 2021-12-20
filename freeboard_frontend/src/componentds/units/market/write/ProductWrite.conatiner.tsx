@@ -8,6 +8,7 @@ export default function ProductWritePage(props) {
   // ===== CreateUsedItem =====
   const [createUseditem] = useMutation(CREATE_USEDITEM);
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
+  const [propsAddress, setPropsAddress] = useState("");
 
   const [myInputs, setMyInputs] = useState({
     name: "",
@@ -70,17 +71,24 @@ export default function ProductWritePage(props) {
     //   setMyContentsError("상세정보를 입력해주세요.");
     // }
     // console.log(myInputs);
+    // console.log(propsAddress);
     try {
       const result = await createUseditem({
         variables: {
-          createUseditemInput: { ...myInputs, images: [...fileUrls] },
+          createUseditemInput: {
+            ...myInputs,
+            images: [...fileUrls],
+            useditemAddress: {
+              address: propsAddress,
+            },
+          },
         },
       });
       console.log(result);
       alert("상품등록이 완료되었습니다.");
+      router.push("/market");
     } catch (error) {
       console.log(error.message);
-      // router.push("/market");
     }
   }
   return (
@@ -93,6 +101,8 @@ export default function ProductWritePage(props) {
       myPriceError={myPriceError}
       myRemarksError={myRemarksError}
       myContentsError={myContentsError}
+      setPropsAddress={setPropsAddress}
+      isEdit={props.isEdit}
     />
   );
 }

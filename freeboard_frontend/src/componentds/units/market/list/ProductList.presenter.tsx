@@ -22,7 +22,7 @@ export default function ProductListPageUI(props) {
           height: "1200px",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          // alignItems: "center",
           overflow: "auto",
         }}
       >
