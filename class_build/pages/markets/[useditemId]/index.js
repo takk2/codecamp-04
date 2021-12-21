@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { gql, request } from "graphql-request";
 
-export default function BoardPage() {
+export default function BoardPage(props) {
   return (
     <>
       <Head>
