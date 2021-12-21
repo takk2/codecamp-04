@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ITextTokenProps } from "./BoardList.types";
 
 export const Container = styled.div`
   width: 100%;
@@ -158,8 +159,7 @@ export const WrapperFunction = styled.div`
   height: 52px;
   margin-top: 80px;
   /* padding-bottom: 80px; */
-  display: flex;
-  justify-content: space-between;
+
   /* background-color: yellow; */
 `;
 
@@ -330,4 +330,8 @@ export const CreatButton = styled.button`
     font-weight: bold;
     font-size: 18px;
   }
+`;
+
+export const TextToken = styled.span`
+  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
 `;

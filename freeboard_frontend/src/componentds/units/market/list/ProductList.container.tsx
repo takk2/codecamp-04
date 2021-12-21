@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import router, { useRouter } from "next/router";
 import {
+  IBoard,
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
@@ -12,7 +13,9 @@ export default function ProductList() {
   const { data: fetchUseditems, fetchMore } = useQuery<
     Pick<IQuery, "fetchUseditems">,
     IQueryFetchUseditemsArgs
-  >(FETCH_USED_ITEMS, {});
+  >(FETCH_USED_ITEMS, {
+    variables: { isSoldout: false },
+  });
 
   const onClickTitle = (event) => {
     router.push(`/market/${event.target.id}`);

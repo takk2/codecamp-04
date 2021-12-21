@@ -2,14 +2,19 @@ import { useMutation } from "@apollo/client";
 import router from "next/router";
 import { useEffect, useState } from "react";
 import ProductWriteUI from "./ProductWrite.presenter";
-import { CREATE_USEDITEM, UPLOAD_FILE } from "./ProductWrite.query";
+import { CREATE_USEDITEM, UPDATE_USEDITEM } from "./ProductWrite.query";
 
 export default function ProductWritePage(props) {
   // ===== CreateUsedItem =====
   const [createUseditem] = useMutation(CREATE_USEDITEM);
+  // =====파일업로드 =====
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
+  // ===== 카카오맵 =====
   const [propsAddress, setPropsAddress] = useState("");
-
+  const [myTitleError, setMyTitleError] = useState("");
+  const [myPriceError, setMyPriceError] = useState("");
+  const [myRemarksError, setMyRemarksError] = useState("");
+  const [myContentsError, setMyContentsError] = useState("");
   const [myInputs, setMyInputs] = useState({
     name: "",
     remarks: "",
@@ -52,10 +57,6 @@ export default function ProductWritePage(props) {
   }, [props.data]);
 
   // ===== onClickSubmitBtn =====
-  const [myTitleError, setMyTitleError] = useState("");
-  const [myPriceError, setMyPriceError] = useState("");
-  const [myRemarksError, setMyRemarksError] = useState("");
-  const [myContentsError, setMyContentsError] = useState("");
 
   async function onClickSubmitBtn(event) {
     // if (!myInputs.name) {

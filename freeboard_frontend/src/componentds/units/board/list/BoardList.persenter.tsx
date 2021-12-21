@@ -1,7 +1,10 @@
 import * as S from "./BoardList.styles";
 import Paginations01 from "../../../commons/pagination/01/Paginations01.container";
+import SearchPage01 from "../../../commons/search/01/search01.container";
+import { v4 as uuidv4 } from "uuid";
+import { IBoardListUIProps } from "./BoardList.types";
 
-export default function BoardListUI(props) {
+export default function BoardListUI(props: IBoardListUIProps) {
   return (
     <>
       <S.Container>
@@ -36,9 +39,11 @@ export default function BoardListUI(props) {
             </S.WrapperHeaderBest>
           </S.WrapperHeader>
           <S.WrapperFunction>
-            <S.FunctionSearch placeholder="제목을 입력해주세요."></S.FunctionSearch>
-            <S.FunctionDate placeholder="YYYY. MM. DD ~ YYYY. MM. DD"></S.FunctionDate>
-            <S.FunctionButton>검색하기</S.FunctionButton>
+            <SearchPage01
+              refetch={props.refetch}
+              refetchBoardsCount={props.refetchBoardsCount}
+              onChangeKeyword={props.onChangeKeyword}
+            />
           </S.WrapperFunction>
           <S.WrapperBody>
             <S.BodyTab>
@@ -49,9 +54,19 @@ export default function BoardListUI(props) {
             </S.BodyTab>
             {props.data?.fetchBoards.map((el, index) => (
               <S.BodyTab1 key={el._id}>
-                <S.TabNum1>{10 - index}</S.TabNum1>
+                <S.TabNum1>{index + 1}</S.TabNum1>
                 <S.TabTitle1 id={el._id} onClick={props.select}>
-                  {el.title}
+                  {el.title
+                    .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
+                    .split("@#$%")
+                    .map((el) => (
+                      <S.TextToken
+                        key={uuidv4()}
+                        isMatched={props.keyword === el}
+                      >
+                        {el}
+                      </S.TextToken>
+                    ))}
                 </S.TabTitle1>
                 <S.TabWriter1>{el.writer}</S.TabWriter1>
                 <S.TabDate1>
@@ -63,6 +78,7 @@ export default function BoardListUI(props) {
           <S.Footer>
             <Paginations01
               refetch={props.refetch}
+              refetchBoardsCount={props.refetchBoardsCount}
               count={props.count}
               startPage={props.startPage}
               setStartPage={props.setStartPage}
