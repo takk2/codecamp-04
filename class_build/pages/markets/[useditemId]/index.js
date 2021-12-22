@@ -10,7 +10,7 @@ export default function BoardPage(props) {
         <meta property="og:image" content={props.fetchUseditem.images[0]} />
         <meta property="og:description" content={props.fetchUseditem.remarks} />
       </Head>
-      <div>안녕하세요! 상품페이지에요!!! </div>;
+      <div>안녕하세요! 상품페이지에요!!! </div>
     </>
   );
 }
