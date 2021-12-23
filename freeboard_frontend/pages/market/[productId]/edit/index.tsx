@@ -1,6 +1,7 @@
+import { ConsoleSqlOutlined } from "@ant-design/icons";
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import ProductWritePage from "../../../../src/componentds/units/market/write/ProductWrite.conatiner";
+import ProductNewPage from "../../../../src/componentds/units/market/new/ProductNew.container";
 
 const FETCH_USED_ITEM = gql`
   query fetchUseditem($useditemId: ID!) {
@@ -27,13 +28,15 @@ const FETCH_USED_ITEM = gql`
   }
 `;
 
-function EditItem() {
+const EditItem = () => {
   const router = useRouter();
   const { data } = useQuery(FETCH_USED_ITEM, {
-    variables: { _id: router.query._id },
+    variables: { useditemId: router.query.productId },
   });
 
-  return <ProductWritePage isEdit={true} data={data} />;
-}
+  console.log(data);
 
-export default EditItem();
+  return <ProductNewPage isEdit={true} data={data} />;
+};
+
+export default EditItem;

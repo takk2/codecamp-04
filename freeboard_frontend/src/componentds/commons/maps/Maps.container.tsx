@@ -103,7 +103,9 @@ export default function MapsPage(props) {
         <MapsInner>
           <Maps id="map" style={{ width: "500px", height: "400px" }}></Maps>
           <Wrapper__Address>
-            <Button onClick={onToggleModal}>우편번호 검색</Button>
+            <Button typeof="button" onClick={onToggleModal}>
+              우편번호 검색
+            </Button>
             <div>
               거래장소: {myAddress}
               {myAddressDetail}
