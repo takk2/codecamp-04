@@ -9,11 +9,10 @@ export default function TestPages2() {
   async function zzz() {
     try {
       const result = await axios.get(
-        "/api" +
-          "http://www.kspo.or.kr/openapi/service/sportsNewFacilInfoService/getNewFacilInfoList?serviceKeyq0YtNPdWx8qVNteC3GhxWSEIH9BCs2fYeStvOI6zh%2B3dvcWYFUplo0Vy60nD1P63KiHbTQvXCfD6kyee6VxBtA%3D%3D=&numOfRows=123&pageNo=1"
+        "https://cors-anywhere.herokuapp.com/http://www.kspo.or.kr/openapi/service/sportsNewFacilInfoService/getNewFacilInfoList?serviceKey=q0YtNPdWx8qVNteC3GhxWSEIH9BCs2fYeStvOI6zh%2B3dvcWYFUplo0Vy60nD1P63KiHbTQvXCfD6kyee6VxBtA%3D%3D&numOfRows=123&pageNo=1"
       );
       console.log(result);
-      setAaa(result.data);
+      // setAaa(result.data);
     } catch (error) {
       console.log(error);
     }
