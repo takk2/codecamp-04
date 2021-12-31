@@ -1,0 +1,29 @@
+tosspayment 기간으로 조회가능한 데이터 키값 
+url = "https://docs.tosspayments.com/reference/test/getTransactionsUsingGET"
+
+[
+  {
+    "mId": "tvivarepublica",
+    "transactionKey": "FE1A532A9A16CB2EF197FAAD29235DEA",
+    "paymentKey": "vG45eDbZnodP9BRQmyarYYnyRpaa2rJ07KzLNkE6AOMwXYWl",
+    "orderId": "222a4ca5-6835-4070-a5dd-644d315903f8",
+    "method": "카드",
+    "customerKey": null,
+    "useEscrow": false,
+    "status": "CANCELED",
+    "transactionAt": "2021-12-30T21:54:08+09:00",
+    "currency": "KRW",
+    "amount": 1000
+  }
+]
+
+mid 빌링사 고유 정보
+transactionKey 거래건에 대한 고유의 키값
+paymentKey 결제건에 대한 고유의 키값
+orderId 가맹점에서 주문건에 대해 발급한 고유 ID입니다.
+method 결제수단
+customerKey 가맹점 키(업체 키값)
+status 결제 정보(취소/완료/등등)
+currency 원화
+amount 가격
+
