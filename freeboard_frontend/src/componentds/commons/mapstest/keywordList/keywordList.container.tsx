@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import KeywordListPageUI from "./keywordList.presenter";
 
-const Keyword = () => {
+const KeywordListPage = () => {
   const [myKeyword, setMyKeyword] = useState<any>();
 
   async function search() {
@@ -14,33 +15,18 @@ const Keyword = () => {
         },
       }
     );
-    console.log(result.data.documents);
     setMyKeyword(result.data.documents);
-    // typeof result.data.documents;
   }
 
   useEffect(() => {
     search();
   }, []);
 
-  console.log(typeof myKeyword);
   return (
     <>
-      <div>이 페이지는 키워드 검색 페이지 입니다. </div>
-      <div>
-        {myKeyword &&
-          myKeyword.map((el) => (
-            <div key={el.id}>
-              <div>{el.place_name}</div>
-              <div>{el.address_name}</div>
-              <div>{el.phone}</div>
-              <a href={el.place_url}>{el.place_url}</a>
-            </div>
-          ))}
-      </div>
-      {/* <button onClick={search}>리스트 가져오기</button> */}
+      <KeywordListPageUI myKeyword={myKeyword} />
     </>
   );
 };
 
-export default Keyword;
+export default KeywordListPage;
