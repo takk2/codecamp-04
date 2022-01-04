@@ -31,7 +31,7 @@ const GetFitnesscentersMapsPage = () => {
               lon = position.coords.longitude; // 경도
 
             const locPosition = new window.kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-              message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+              message = '<div style="padding:5px;">현재위치</div>'; // 인포윈도우에 표시될 내용입니다
 
             // 마커와 인포윈도우를 표시합니다
             displayMarker(locPosition, message);
@@ -40,10 +40,11 @@ const GetFitnesscentersMapsPage = () => {
           // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
           const locPosition = new window.kakao.maps.LatLng(
-              33.450701,
-              126.570667
+              37.56639085841548,
+              126.9779594783454
             ),
-            message = "geolocation을 사용할수 없어요..";
+            // 37.56639085841548, 126.97795947834545 // 서울시청
+            message = "현재위치 불러오기에 실패하였습니다";
 
           displayMarker(locPosition, message);
         }
@@ -55,18 +56,6 @@ const GetFitnesscentersMapsPage = () => {
             map: map,
             position: locPosition,
           });
-
-          const iwContent = message, // 인포윈도우에 표시할 내용
-            iwRemoveable = true;
-
-          // 인포윈도우를 생성합니다
-          const infowindow = new window.kakao.maps.InfoWindow({
-            content: iwContent,
-            removable: iwRemoveable,
-          });
-
-          // 인포윈도우를 마커위에 표시합니다
-          infowindow.open(map, marker);
 
           // 지도 중심좌표를 접속위치로 변경합니다
           map.setCenter(locPosition);
